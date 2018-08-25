@@ -15,6 +15,8 @@ Functional Requirements:
 13.	List the name of the place/product being reviewed 
 14.	Profile page for users (About me, reviews they have reviewed, last review made, etc.)
 15.	Limit on how many times a user can review place/product 
+
+
 Non-Functional Requirements:
 1.	Send an email when a review has been posted 
 2.	Lock account after a certain amount of failed login attempts
