@@ -21,3 +21,5 @@
 3.	User friendly interface (Easy accessibility across platforms)
 4.	Use a secure login or 2-factor authentication 
 5.	Using Biometric login (if available, to login into site(For mobile application))  
+
+# Professor Feedback:
