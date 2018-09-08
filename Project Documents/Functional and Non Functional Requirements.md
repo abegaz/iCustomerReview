@@ -23,3 +23,21 @@
 5.	Using Biometric login (if available, to login into site(For mobile application))  
 
 # Professor Feedback:
+FR 1 ✓
+FR 2: Set instead of have 
+FR 3 Create inseatd of have
+FR 4 Post instead of have
+FR 5 ✓
+FR 6
+FR 7 send an email... ✓
+FR 8 ✓
+FR 9 combine it with functional requirement 12
+FR 10 ✓
+FR 11 ✓
+FR 13 ✓
+FR 14 Send an email about weekely review of profile 
+FR 15 could be a non-functional requirement
+NFR 1 Mobile and Desktop version available 
+NFR 2 and 3 make it measurable
+NFR 4 ✓
+NFR 5 use biometric authnetication 
