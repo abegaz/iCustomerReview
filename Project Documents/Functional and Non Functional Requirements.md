@@ -1,3 +1,9 @@
+> As of September 9, 2018, the following changes were made:
+> 1. The Professor's feedback has been updated into the document 
+> 2. Added a NFR 
+
+
+
 # Functional Requirements:
 1.	Send email to user to verify account creation
 2.	Set character limit on a review
@@ -43,6 +49,4 @@ NFR 2 and 3 make it measurable
 NFR 4 ✓
 NFR 5 use biometric authentication 
 
-> As of September 9, 2018, the following changes were made:
-> 1. The Professor's feedback has been updated into the document 
-> 2. Added a NFR 
+
