@@ -5,7 +5,7 @@
 \\\
 
 # Functional Requirements:
-1.	Send email to user to verify account creation [ ]
+1.	Send email to user to verify account creation [  ]
 2.	Set character limit on a review [ ]
 3.	Create rating system for a review (1,2 Star, etc.)  [ ]
 4.	Post name of user posting a review and date of review [ ]
