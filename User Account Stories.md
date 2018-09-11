@@ -1,4 +1,4 @@
->Acceptance Criteria is need for the each one
+>Acceptance Criteria is needed for each one
 
 # Darius' UAS:
 1. As a customer I want to be able to leave a review for this product so that I may tell other potential customers that this product is good or bad.
