@@ -21,12 +21,13 @@
 2. As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
 ### Acceptance Criteria:
 # Stephen's Criteria:
-1. As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
-### Acceptance Criteria: Reseller wishes to read legit feedback/reviews
+### 1. As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
+Reseller wishes to read legit feedback/reviews
 1. Sort through all reviews for relevance.
 2. Take negative reviews as constructive criticism
 3. Use top positive reviews as testimonials
-2. As a cybersecurity specialist, I want to keep the database secure so that customers can trust me with their data.
+
+### 2. As a cybersecurity specialist, I want to keep the database secure so that customers can trust me with their data.
 ### Acceptance Criteria: Hacker wants to steal data for personal gain.
 1. Hacker fails to inject SQL script
 2. Hacker is deferred by login requirements
