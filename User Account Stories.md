@@ -1,4 +1,4 @@
-# Darius UAS:
+# Darius' UAS:
 1. As a customer I want to be able to leave a review for this product so that I may tell other potential customers that this product is bad/good.
 2. As a customer I want to be able to rate this product on a scale so that I may show my satisfaction with it. 
 # Robert’s UAS:
