@@ -15,3 +15,13 @@
 ### Acceptance Criteria:
 2.	As a online shopper I want to see related products with reviews, so that I can make a better decision when purchasing a product.
 ### Acceptance Criteria:
+# Brisaac's UAS:
+1. As a reviewer, I want to post a review so that I can express my satisfaction toward a place/product.
+### Acceptance Criteria:
+2. As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
+### Acceptance Criteria:
+# Stephen's Criteria:
+1. As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
+### Acceptance Criteria:
+2. As a cybersecurity specialist, I want to keep the database secure so that customers can trust me with their data.
+### Acceptance Criteria:
