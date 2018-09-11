@@ -4,7 +4,7 @@
 1. As a customer I want to be able to leave a review for this product so that I may tell other potential customers that this product is good or bad.
 ### Acceptance Criteria
 2. As a customer I want to be able to rate this product on a scale so that I may show my satisfaction with it. 
-## Acceptance Criteria
+### Acceptance Criteria
 # Robert’s UAS:
 1.	As an online shopper I want to isolate valid reviews to have peace of mind that the product I want to buy is properly reviewed.
 ### Acceptance Criteria
