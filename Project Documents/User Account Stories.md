@@ -14,13 +14,28 @@
 1.	As a reviewer I want this platform to have a system or symbol for certified reviews for others to see. So that people will know who is serious about the reviews and who is trolling.
 ### Acceptance Criteria:
 2.	As a online shopper I want to see related products with reviews, so that I can make a better decision when purchasing a product.
-### Acceptance Criteria:
+### Acceptance Criteria: 
 # Brisaac's UAS:
 ### 1. As a reviewer, I want to post a review so that I can express my satisfaction toward a place/product.
-### Acceptance Criteria:
+### Acceptance Criteria: 1. Success - Review has been posted with email confirmation
+1a. Review is posted with with email confirmation sent
+1b. Passed reCaptcha
+#### 2. Failure - Review is rejected
+2a. Failed reCaptcha
+2b. Offensive words
+2c. Over character limit
+2d. Session timed out
+2e. Has posted to this product/place already
 ### 2. As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
-### Acceptance Criteria:
-# Stephen's Criteria:
+### Acceptance Criteria: 1. Success - Review was removed or modified
+1a. Status update to show the review was updated
+1b. Review not found if user tries to reaccess it
+1c. "Are you sure you want to delete the review?"
+#### 2. Failure - Review isn't modified/deleted
+2a. User doesn't confirm delete
+2b. User doesn't save changes
+2c. User uses explicit words when saving changes
+# Stephen's UAS:
 ### 1. As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
 ### Acceptance Criteria: Reseller wishes to read legit feedback/reviews
 1. Sort through all reviews for relevance.
