@@ -13,5 +13,5 @@
 # Benmo’s UAS:
 1.	As a reviewer I want this platform to have a system or symbol for certified reviews for others to see. So that people will know who is serious about the reviews and who is trolling.
 ### Acceptance Criteria:
-2.	As a online shopper I want to see related products with reviews reviewing, so that I can make a better decision when purchasing a product.
+2.	As a online shopper I want to see related products with reviews, so that I can make a better decision when purchasing a product.
 ### Acceptance Criteria:
