@@ -16,13 +16,13 @@
 2.	As a online shopper I want to see related products with reviews, so that I can make a better decision when purchasing a product.
 ### Acceptance Criteria:
 # Brisaac's UAS:
-1. As a reviewer, I want to post a review so that I can express my satisfaction toward a place/product.
+### 1. As a reviewer, I want to post a review so that I can express my satisfaction toward a place/product.
 ### Acceptance Criteria:
-2. As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
+### 2. As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
 ### Acceptance Criteria:
 # Stephen's Criteria:
 ### 1. As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
-Reseller wishes to read legit feedback/reviews
+### Acceptance Criteria: Reseller wishes to read legit feedback/reviews
 1. Sort through all reviews for relevance.
 2. Take negative reviews as constructive criticism
 3. Use top positive reviews as testimonials
@@ -33,6 +33,7 @@ Reseller wishes to read legit feedback/reviews
 2. Hacker is deferred by login requirements
 3. Hacker is identified and reported
 # Samuel's UAS:
-1. As a customer who is wary of online shopping, I want to be able to sort and view one-star reviews separately from higher rated reviews.
+### 1. As a customer who is wary of online shopping, I want to be able to sort and view one-star reviews separately from higher rated reviews.
 ### Acceptance Criteria:
-2. 
+### 2.
+### Acceptance Criteria:
