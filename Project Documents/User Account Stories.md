@@ -34,6 +34,6 @@
 3. Hacker is identified and reported
 # Samuel's UAS:
 ### 1. As a customer who is wary of online shopping, I want to be able to sort and view one-star reviews separately from higher rated reviews.
-### Acceptance Criteria:
-### 2.
-### Acceptance Criteria:
+### Acceptance Criteria: As a customer I am able to sort an view all one-star reviews, excluding all other reviews rated higher than one-star. 
+### 2. As a user with valuable personal information tied to my review account, I want multiple measures in place to secure my account's privacy.
+### Acceptance Criteria: As a user my information is secured through multiple methods, including a confirmation email and locking of accounts with multiple failed login attempts.
