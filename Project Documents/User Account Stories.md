@@ -70,8 +70,8 @@
 # Jeff's UAS
 As a small business owner who often reorders products online, I would like to be able to view more recent reviews of products to ensure product quality has not declined over time. 
 
-Acceptance Criteria: When I view the review section for a product, the option to sort by most recent reviews is present. 
+### Acceptance Criteria: When I view the review section for a product, the option to sort by most recent reviews is present. 
 
 As an online shopper who is skeptical of other users’ word when it comes to the quality of a product, I would like for other users to be able to attach photos of a product to their review of said product to back up any compliments or complaints regarding the product. 
 
-Acceptance Criteria: When I view user reviews, some reviews have an attached photo of the product they received that validates their review of the product.
+### Acceptance Criteria: When I view user reviews, some reviews have an attached photo of the product they received that validates their review of the product.
