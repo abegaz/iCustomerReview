@@ -58,6 +58,12 @@
 3. Hacker is identified and reported
 # Samuel's UAS:
 ### 1. As a customer who is wary of online shopping, I want to be able to sort and view one-star reviews separately from higher rated reviews.
-### Acceptance Criteria: As a customer I am able to sort an view all one-star reviews, excluding all other reviews rated higher than one-star. 
+### Acceptance Criteria: Customer wishes to view the one-star reviews seperate from higher star-rated reviews.
+1. Customer enters the app.
+2. The customer finds the product they are interested in.
+3. They filter the reviews so only the one-star reviews are visible to them.
 ### 2. As a user with valuable personal information tied to my review account, I want multiple measures in place to secure my account's privacy.
-### Acceptance Criteria: As a user my information is secured through multiple methods, including a confirmation email and locking of accounts with multiple failed login attempts.
+### Acceptance Criteria: User's information is secured through multiple methods.
+1. User enters their user name and password.
+2. They are required to pass a reCaptcha.
+3. They are sent an email notifying them that a login has occured.
