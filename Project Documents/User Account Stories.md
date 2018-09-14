@@ -2,7 +2,7 @@
 
 # Darius' UAS:
 1. As a customer I want to be able to leave a review for this product so that I may tell other potential customers that this product is good or bad.
-### Acceptance Criteria: As a customer, when I log into my account and leave a review for a product, it asks me whether I want to give the product a thumbs up or a thumbs up.
+### Acceptance Criteria: As a customer, when I log into my account and leave a review for a product, it asks me whether I want to give the product a thumbs up or a thumbs down.
 2. As a customer I want to be able to rate this product on a scale so that I may show my satisfaction with it. 
 ### Acceptance Criteria: As a customer, when I log into my account and leave a review for a product, it pops a notice asking me to rate the product from 1-5 stars.
 # Robert’s UAS:
