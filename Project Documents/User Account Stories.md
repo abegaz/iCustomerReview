@@ -7,9 +7,11 @@
 ### Acceptance Criteria: As a customer, when I log into my account and leave a review for a product, it pops a notice asking me to rate the product from 1-5 stars.
 # Robert’s UAS:
 ###1.	As an online shopper I want to isolate valid reviews to have peace of mind that the product I want to buy is properly reviewed.
+
 ### Acceptance Criteria: Ability to sort 'Verified' and 'Not Yet Verified' reviews
 1. Software has filter that can view 'Verified' and 'Not Yet Verified' reviews
 2. Verification based on pre-determined criteria (Language, Source, Star-Rating, etc.)
+
 ###2.	As an online shopper, I want to be able to see a star rating adjusted to fit valid reviews so that I can easily determine the quality of a product.
 ### Acceptance Criteria: Product should show star-rating for all reviews and for 'Verified' reviews separately
 1. Each review should have its own star rating
