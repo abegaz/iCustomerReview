@@ -80,3 +80,7 @@ Acceptance criteria: User can view a page displaying all of their reviews they h
 Acceptance criteria: Multiple reviews of the same product are rejected if the submitting IP is a duplicate.
 #### As an administrator, I want to see which reviews are flagged as rejected.
 Acceptance criteria: database returns the reviews that have been flagged as rejected for any reason.
+
+# Feedback for assignment 2
+Good work
+
