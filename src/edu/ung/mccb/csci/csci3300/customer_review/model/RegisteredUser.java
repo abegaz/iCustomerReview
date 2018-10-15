@@ -6,7 +6,9 @@ import java.security.SecureRandom;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
-public class RegisteredUser {
+public class RegisteredUser { // TODO: refactor this class with narrowed scope
+    // This class should cover user registration and login tasks only.
+    // Supporting methods like password hashing will be required elsewhere for user editing.
 
     private static final char[] saltArray = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
                                              'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','t','y',
@@ -35,7 +37,7 @@ public class RegisteredUser {
         return affectedRow;
     }
 
-    private String hashPassword (String password, String salt)
+    private String hashPassword (String password, String salt) // TODO: relocate to separate class
     {
         String hashedPassword = null;
         try {
