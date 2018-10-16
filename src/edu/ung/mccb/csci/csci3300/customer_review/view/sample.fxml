@@ -19,7 +19,7 @@
             <Text layoutX="201.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Sign Up" textAlignment="CENTER" wrappingWidth="266.21875" />
             <Button layoutX="305.0" layoutY="503.0" mnemonicParsing="false" text="Submit" />
             <Text fill="#ff0808" layoutX="231.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-            <Text layoutX="63.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+            <Text fill="#f80303" layoutX="63.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
             <Text layoutX="69.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" means field is optional" />
          </children>
       </AnchorPane>
