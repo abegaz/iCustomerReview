@@ -27,7 +27,7 @@ public class Controller {
         boolean isValid= validatePassword(userPassword, confirmUserPassword);
 
         if (isValid) {
-              //is this needed?
+              
 
             String salt = user.generateSalt();
             String hashAndSaltedPassword = user.hashPassword(userPassword, salt);
