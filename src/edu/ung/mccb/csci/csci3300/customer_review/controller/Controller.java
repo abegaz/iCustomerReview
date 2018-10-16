@@ -1,5 +1,8 @@
 package edu.ung.mccb.csci.csci3300.customer_review.controller;
-import edu.ung.mccb.csci.csci3300.customer_review.model;
+import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
+
+import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,27 +27,26 @@ public class Controller {
             sb.append( AlphaNum.charAt( randomSalt.nextInt(AlphaNum.length()) ));
         return sb.toString();
     }
-    
+
     //pending name based on whats called in view
-    
-    public void *BUTTON NAME IS NOT SET*(ActionEvent actionEvent) throws Exception{
-      
+
+    public void createuser(ActionEvent actionEvent) throws Exception{
+
         RegisteredUser user = new RegisteredUser();
         String userPassword =  password.getText();
         String confirmUserPassword =  cpassword.getText();
         boolean isValid= validatePassword(userPassword, confirmUserPassword);
-        
+
         if (isValid) {
               //is this needed?
-            /*
-            String salt = genreateRandomSalt(32);
+
+            String salt = generateRandomSalt(32);
             String hashAndSaltedPassword = user.generateSaltedHashedPassword(userPassword, salt);
 
             int resutl = user.saveUserIntoDatabase(username.getText(),email.getText(),hashAndSaltedPassword,salt);
             System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
-            */
-            
-            // waiting for the Register user page (fxml) to be created 
+
+            // waiting for the Register user page (fxml) to be created
             
             Stage primaryStage= new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/*"));
@@ -94,12 +96,12 @@ public class Controller {
     
      //pending name based on whats called in view
     
-    public void *BUTTON NAME IS NOT SET*(ActionEvent actionEvent) {
+    /*public void *BUTTON NAME IS NOT SET*(ActionEvent actionEvent) {
         Model model = new Model();
         boolean isRegistred = model.verifyLogin(password.getText(), username.getText());
         if(isRegistred)
         {
-            System.out.println("User login Succesful!"); 
+            System.out.println("User login Successful!");
         }
-    }
+    }*/
 }

@@ -1,4 +1,6 @@
-package edu.ung.mccb.csci.csci3300.customer_review.model;
+package edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
+
+import edu.ung.mccb.csci.csci3300.customer_review.model.DatabaseConfigurator;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +26,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
         String hashedPassword = hashPassword(password, passwordSalt);
 
         try (Connection connect = DatabaseConfigurator.getConnection();
-            PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
+             PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);) {
             sqlStatement.setString(1, username);
             sqlStatement.setString(2, email);
             sqlStatement.setString(3, hashedPassword);
