@@ -15,12 +15,12 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
                                              '1','2','3','4','5','6','7','8','9','0'};
 
     // takes new user information and
-    public int registerNewUser (String username, String email, String password)
+    public int registerNewUser (String username, String email, String password, String salt)
     {
         int affectedRow = 0;
         String query = "INSERT INTO USER" + "(username, email, password, salt)" + "values(?,?,?,?)";
 
-        String passwordSalt = generateSalt(saltArray);
+        String passwordSalt = salt;
         String hashedPassword = hashPassword(password, passwordSalt);
 
         try (Connection connect = DatabaseConfigurator.getConnection();
@@ -37,7 +37,11 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
         return affectedRow;
     }
 
-    private String hashPassword (String password, String salt) // TODO: relocate to separate class
+    public int registerNewUser (String username, String email, String password) {
+        return registerNewUser (username, email, password, generateSalt());
+    }
+
+    public String hashPassword (String password, String salt) // TODO: relocate to separate class
     {
         String hashedPassword = null;
         try {
@@ -61,5 +65,9 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
         for (int index = 0; index < 32; index++)
             salt[index] = charArray[random.nextInt(charArray.length)];
         return salt.toString();
+    }
+
+    public String generateSalt () {
+        return generateSalt (saltArray);
     }
 }
