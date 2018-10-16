@@ -1,7 +1,6 @@
 package edu.ung.mccb.csci.csci3300.customer_review.controller;
 import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
 
-import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,11 +39,11 @@ public class Controller {
         if (isValid) {
               //is this needed?
 
-            String salt = generateRandomSalt(32);
-            String hashAndSaltedPassword = user.generateSaltedHashedPassword(userPassword, salt);
+            String salt = user.generateSalt();
+            String hashAndSaltedPassword = user.hashPassword(userPassword, salt);
 
-            int resutl = user.saveUserIntoDatabase(username.getText(),email.getText(),hashAndSaltedPassword,salt);
-            System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
+            int resutl = user.registerNewUser(username.getText(),email.getText(),hashAndSaltedPassword,salt);
+            // System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
 
             // waiting for the Register user page (fxml) to be created
             
