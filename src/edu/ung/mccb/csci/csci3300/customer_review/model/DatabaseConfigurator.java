@@ -12,7 +12,7 @@ public class DatabaseConfigurator {
 
     // connection  method that connects us to the MySQL database
     public static Connection getConnection() throws SQLException {
-        //System.out.println("Connected to student database successfully!");
+        System.out.println("User logged in Successfully!");
         return DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
     }
 
