@@ -107,6 +107,11 @@ public class UserData {
         }
     }
 
+    /**
+     * A supporting method to initialize the UserData data structure following a call of RegisteredUser.registerNewUser()
+     * @param username
+     * @param email
+     */
     protected void constructNewUser (String username, String email) {
         setAccountIDbyUsername(username);
         String query = "SELECT * FROM USER WHERE accountID = '" + account_ID + "'";

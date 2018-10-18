@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbf9d89f-45a5-48c1-a50c-c2e19a9c1cac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" afterDir="false" />
     </list>
@@ -33,12 +23,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1537" />
+          <entry key="java" value="1741" />
+          <entry key="txt" value="208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1537" />
+          <entry key="JAVA" value="1741" />
+          <entry key="PLAIN_TEXT" value="208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -70,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="26" column="211" selection-start-line="26" selection-start-column="211" selection-end-line="26" selection-end-column="211" />
+            <state relative-caret-position="204">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -79,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+            <state relative-caret-position="391">
+              <caret line="110" column="121" selection-start-line="110" selection-start-column="121" selection-end-line="110" selection-end-column="121" />
               <folding>
                 <element signature="e#5399#5400#0" expanded="true" />
                 <element signature="e#5432#5433#0" expanded="true" />
@@ -106,13 +98,14 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" />
         <option value="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java" />
+        <option value="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" />
       </list>
     </option>
   </component>
@@ -202,10 +195,19 @@
       <option name="presentableId" value="Default" />
       <updated>1539886208545</updated>
     </task>
+    <task id="LOCAL-00001" summary="Refactored RegisteredUser into a subclass of UserData. Added an email param to UserData. Reorganized and restricted members of RegisteredUser in preparation for login code implementation.">
+      <created>1539887829611</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1539887829611</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -237,6 +239,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactored RegisteredUser into a subclass of UserData. Added an email param to UserData. Reorganized and restricted members of RegisteredUser in preparation for login code implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored RegisteredUser into a subclass of UserData. Added an email param to UserData. Reorganized and restricted members of RegisteredUser in preparation for login code implementation." />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -250,15 +256,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="211" selection-start-line="26" selection-start-column="211" selection-end-line="26" selection-end-column="211" />
+        <state relative-caret-position="204">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="81" column="46" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+        <state relative-caret-position="391">
+          <caret line="110" column="121" selection-start-line="110" selection-start-column="121" selection-end-line="110" selection-end-column="121" />
           <folding>
             <element signature="e#5399#5400#0" expanded="true" />
             <element signature="e#5432#5433#0" expanded="true" />

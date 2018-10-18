@@ -9,11 +9,12 @@ import java.sql.*;
 /**
  * Class that handles user registration and login.
  * <p>
- *     Provided methods register users, hash and salt passwords, and handle login events.
+ *     Provided methods register users, hash and salt passwords, and handle login events. This class is a subclass of the object UserData.
  * </p>
+ * @see edu.ung.mccb.csci.csci3300.customer_review.model.UserData
  * @author Zachary Jones
  */
-public class RegisteredUser extends UserData { // TODO: refactor this class as a subclass of UserData
+public class RegisteredUser extends UserData {
     // This class should cover user registration and login tasks only.
     // Supporting methods like password hashing will be required elsewhere for user editing.
 
