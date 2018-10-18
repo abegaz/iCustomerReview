@@ -21,6 +21,7 @@
             <Text fill="#ff0808" layoutX="231.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
             <Text fill="#f80303" layoutX="63.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
             <Text layoutX="69.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" means field is optional" />
+            <TextField layoutX="393.0" layoutY="157.0" promptText="Verify Password" />
          </children>
       </AnchorPane>
    </children>
