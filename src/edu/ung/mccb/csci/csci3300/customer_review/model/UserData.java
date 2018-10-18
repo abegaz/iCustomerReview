@@ -108,9 +108,12 @@ public class UserData {
     }
 
     /**
-     * A supporting method to initialize the UserData data structure following a call of RegisteredUser.registerNewUser()
-     * @param username
-     * @param email
+     * A supporting method to initialize the UserData data structure.
+     * <p>
+     *     Loads data into the UserData superclass object following a call of {@link RegisteredUser#registerNewUser(String, String, String), RegisteredUser.registerNewUser()}.
+     * </p>
+     * @param username String
+     * @param email String
      */
     protected void constructNewUser (String username, String email) {
         setAccountIDbyUsername(username);

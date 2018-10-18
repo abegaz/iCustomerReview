@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cbf9d89f-45a5-48c1-a50c-c2e19a9c1cac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,14 +22,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1741" />
-          <entry key="txt" value="208" />
+          <entry key="java" value="2022" />
+          <entry key="txt" value="233" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1741" />
-          <entry key="PLAIN_TEXT" value="208" />
+          <entry key="JAVA" value="2022" />
+          <entry key="PLAIN_TEXT" value="233" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -62,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+            <state relative-caret-position="306">
+              <caret line="34" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -71,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="110" column="121" selection-start-line="110" selection-start-column="121" selection-end-line="110" selection-end-column="121" />
+            <state relative-caret-position="-1054">
+              <caret line="112" column="175" lean-forward="true" selection-start-line="112" selection-start-column="175" selection-end-line="112" selection-end-column="175" />
               <folding>
                 <element signature="e#5399#5400#0" expanded="true" />
                 <element signature="e#5432#5433#0" expanded="true" />
@@ -94,6 +93,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>@link</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -169,6 +173,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539889379568" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Git/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -202,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539887829611</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="TODO and Javadoc updates.">
+      <created>1539888054116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1539888054116</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -216,7 +228,7 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.3290993" />
+      <window_info anchor="bottom" id="Version Control" visible="true" weight="0.3290993" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -229,6 +241,7 @@
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" x="0" y="0" width="274" height="800" id="Documentation" side_tool="true" weight="0.32928804" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -241,7 +254,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactored RegisteredUser into a subclass of UserData. Added an email param to UserData. Reorganized and restricted members of RegisteredUser in preparation for login code implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored RegisteredUser into a subclass of UserData. Added an email param to UserData. Reorganized and restricted members of RegisteredUser in preparation for login code implementation." />
+    <MESSAGE value="TODO and Javadoc updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO and Javadoc updates." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/controller/Controller.java">
@@ -256,15 +270,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/RegisteredUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        <state relative-caret-position="306">
+          <caret line="34" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ung/mccb/csci/csci3300/customer_review/model/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="110" column="121" selection-start-line="110" selection-start-column="121" selection-end-line="110" selection-end-column="121" />
+        <state relative-caret-position="-1054">
+          <caret line="112" column="175" lean-forward="true" selection-start-line="112" selection-start-column="175" selection-end-line="112" selection-end-column="175" />
           <folding>
             <element signature="e#5399#5400#0" expanded="true" />
             <element signature="e#5432#5433#0" expanded="true" />
