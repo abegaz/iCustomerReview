@@ -12,7 +12,7 @@
 
 <!-- TODO create controller for UserLogin and link it to fx:controller -->
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.view.UserLogin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.view.UserLogin">
    <children>
       <VBox alignment="CENTER" layoutX="141.0" layoutY="85.0">
          <children>
@@ -55,5 +55,6 @@
             </HBox>
          </children>
       </VBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

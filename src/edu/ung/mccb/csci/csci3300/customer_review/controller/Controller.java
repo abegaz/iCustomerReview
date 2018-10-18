@@ -76,12 +76,12 @@ public class Controller {
     
      //pending name based on whats called in view
     
-    /*public void *BUTTON NAME IS NOT SET*(ActionEvent actionEvent) {
-        Model model = new Model();
-        boolean isRegistred = model.verifyLogin(password.getText(), username.getText());
-        if(isRegistred)
+    public void userCreate(ActionEvent actionEvent) {
+        RegisteredUser model = new RegisteredUser();
+        /*boolean isRegistered = model.verifyLogin(password.getText(), username.getText());
+        if(isRegistered)
         {
             System.out.println("User login Successful!");
-        }
-    }*/
+        }*/
+    }
 }

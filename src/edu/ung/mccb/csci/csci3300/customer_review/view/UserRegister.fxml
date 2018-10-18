@@ -10,14 +10,14 @@
 
 <GridPane alignment="center" hgap="10" prefHeight="599.0" prefWidth="703.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
    <children>
-      <AnchorPane prefHeight="596.0" prefWidth="699.0">
+      <AnchorPane prefHeight="610.0" prefWidth="699.0">
          <children>
             <TextField layoutX="63.0" layoutY="102.0" promptText="Username" />
             <TextField layoutX="393.0" layoutY="102.0" promptText="Password" />
             <TextField layoutX="63.0" layoutY="157.0" promptText="Display Name" />
             <TextField layoutX="63.0" layoutY="221.0" prefHeight="27.0" prefWidth="364.0" promptText="Email Adress" />
             <Text layoutX="201.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Registration" textAlignment="CENTER" wrappingWidth="266.21875" />
-            <Button layoutX="305.0" layoutY="503.0" mnemonicParsing="false" text="Submit" />
+            <Button layoutX="296.0" layoutY="376.0" mnemonicParsing="false" onAction="#userCreate" text="Submit" />
             <Text fill="#ff0808" layoutX="231.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
             <Text fill="#f80303" layoutX="63.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
             <Text layoutX="69.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" means field is optional" />
