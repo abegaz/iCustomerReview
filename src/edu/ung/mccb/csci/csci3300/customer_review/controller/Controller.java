@@ -1,6 +1,6 @@
 package edu.ung.mccb.csci.csci3300.customer_review.controller;
 
-import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
+import edu.ung.mccb.csci.csci3300.customer_review.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 public class Controller {
     @FXML
     TextField email, username, password, cpassword;
-    static final String AlphaNum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     //pending name based on whats called in view
 
@@ -27,12 +26,8 @@ public class Controller {
         boolean isValid= validatePassword(userPassword, confirmUserPassword);
 
         if (isValid) {
-              
 
-            String salt = user.generateSalt();
-            String hashAndSaltedPassword = user.hashPassword(userPassword, salt);
-
-            int resutl = user.registerNewUser(username.getText(),email.getText(),hashAndSaltedPassword,salt);
+            user.registerNewUser(username.getText(),email.getText(),userPassword);
             // System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
 
             // waiting for the Register user page (fxml) to be created
