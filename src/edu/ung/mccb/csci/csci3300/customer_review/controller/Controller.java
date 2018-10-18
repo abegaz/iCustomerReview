@@ -1,7 +1,6 @@
 package edu.ung.mccb.csci.csci3300.customer_review.controller;
-import edu.ung.mccb.csci.csci3300.customer_review.model.RegisteredUser;
 
-
+import edu.ung.mccb.csci.csci3300.customer_review.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,21 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.security.SecureRandom;
 
 
 public class Controller {
     @FXML
     TextField email, username, password, cpassword;
-    static final String AlphaNum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    static SecureRandom randomSalt = new SecureRandom();
-
-    String genreateRandomSalt( int len ){
-        StringBuilder sb = new StringBuilder(len);
-        for( int i = 0; i < len; i++ )
-            sb.append( AlphaNum.charAt( randomSalt.nextInt(AlphaNum.length()) ));
-        return sb.toString();
-    }
 
     //pending name based on whats called in view
 
@@ -37,12 +26,8 @@ public class Controller {
         boolean isValid= validatePassword(userPassword, confirmUserPassword);
 
         if (isValid) {
-              //is this needed?
 
-            String salt = user.generateSalt();
-            String hashAndSaltedPassword = user.hashPassword(userPassword, salt);
-
-            int resutl = user.registerNewUser(username.getText(),email.getText(),hashAndSaltedPassword,salt);
+            user.registerNewUser(username.getText(),email.getText(),userPassword);
             // System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
 
             // waiting for the Register user page (fxml) to be created
@@ -52,13 +37,10 @@ public class Controller {
             primaryStage.setTitle("iCustomerReview");
             primaryStage.setScene(new Scene(root, 500, 450));
             primaryStage.show();
-
         }
-        else
-        {
+        else {
             message ();
         }
-
     }
 
     private static boolean validatePassword(String password, String cPassword) {
@@ -69,7 +51,8 @@ public class Controller {
                 return true;
             else
                 return false;
-        } else {
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Password mismatch");
             alert.setHeaderText("Please re-enter the password");
@@ -77,8 +60,8 @@ public class Controller {
             return false;
         }
     }
-    private void message ()
-    {
+
+    private void message () {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Password Requirements");
         alert.setHeaderText("The password entered here  is invalid");
@@ -88,9 +71,7 @@ public class Controller {
                 "Password should contain at least one digit .\n" +
                 "Password should have at least special character.\n ");
 
-
         alert.showAndWait();
-
     }
     
      //pending name based on whats called in view

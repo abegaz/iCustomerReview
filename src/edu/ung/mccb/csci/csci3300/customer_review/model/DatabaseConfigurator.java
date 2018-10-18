@@ -4,19 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Class to handle connecting to the database.
+ */
 public class DatabaseConfigurator {
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     private static final String CONN_STRING = "jdbc:mysql://localhost/customer_review_db";
 
-    // connection  method that connects us to the MySQL database
+    /**
+     * Establishes a connection to the database to transmit SQL syntax.
+     * @return Connection
+     * @throws SQLException
+     */
     public static Connection getConnection() throws SQLException {
-        System.out.println("User logged in Successfully!");
+       //  System.out.println("User logged in Successfully!");
         return DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
     }
 
-    // method that displays our errors in more detail if connection fails
+    /**
+     * Displays details about errors when SQL exceptions occur.
+     * @param ex SQLException
+     */
     public static void displayException(SQLException ex){
 
         System.err.println("Error Message: " + ex.getMessage());
