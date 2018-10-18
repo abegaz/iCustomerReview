@@ -18,7 +18,7 @@ public class Controller {
 
     //pending name based on whats called in view
 
-    public void createuser(ActionEvent actionEvent) throws Exception{
+    public void createUser(ActionEvent actionEvent) throws Exception{ // TODO: refactor usages of RegisteredUser to reflect UserData data structure
 
         RegisteredUser user = new RegisteredUser();
         String userPassword =  password.getText();
