@@ -14,12 +14,13 @@ import java.sql.Statement;
  */
 public class UserData {
 
-    private int account_ID;
-    private String username;
-    private String hashedPassword;
-    private String firstName;
-    private String lastName;
-    private String displayName; // TODO: add any additional vars stored about users to this data object
+    protected int account_ID;
+    protected String username;
+    protected String email;
+    protected String hashedPassword;
+    protected String firstName;
+    protected String lastName;
+    protected String displayName; // TODO: add any additional vars stored about users to this data object
 
     /**
      * Default constructor that loads an empty UserData object.
@@ -44,6 +45,8 @@ public class UserData {
     public UserData (int account_ID) {
         setAccount_ID (account_ID);
         getDataFromUser();
+
+
     }
     /**
      * Sets account_ID based on the provided username.
@@ -70,22 +73,21 @@ public class UserData {
      */
     public void getDataFromUser () {
         String query = "SELECT * FROM USER WHERE accountID = '" + account_ID + "'";
-
         try {
             Connection connect = DatabaseConfigurator.getConnection();
             Statement sqlStatement = connect.createStatement();
             ResultSet result = sqlStatement.executeQuery(query);
 
             username = result.getString("username");
+            email = result.getString("email");
             hashedPassword = result.getString("hashedPassword"); // TODO: double-check table column names and correct as necessary
             firstName = result.getString("firstName");
             lastName = result.getString("lastName");
             displayName = result.getString("displayName");
+            return;
+        } catch (SQLException e) {
+            DatabaseConfigurator.displayException(e);
         }
-        catch (SQLException e) {
-            System.out.println("Operation failed due to SQL exception:\n" + e);
-        }
-        return;
     }
 
     /**
@@ -99,17 +101,42 @@ public class UserData {
             Connection connect = DatabaseConfigurator.getConnection();
             Statement sqlStatement = connect.createStatement();
             sqlStatement.executeQuery(query);
+            return;
         } catch (SQLException e) {
-            System.out.println("Operation failed due to SQL exception:\n" + e);
+            DatabaseConfigurator.displayException(e);
         }
-        return;
+    }
+
+    /**
+     * A supporting method to initialize the UserData data structure following a call of RegisteredUser.registerNewUser()
+     * @param username
+     * @param email
+     */
+    protected void constructNewUser (String username, String email) {
+        setAccountIDbyUsername(username);
+        String query = "SELECT * FROM USER WHERE accountID = '" + account_ID + "'";
+
+        try {
+            Connection connect = DatabaseConfigurator.getConnection();
+            Statement sqlStatement = connect.createStatement();
+            ResultSet result = sqlStatement.executeQuery(query);
+
+            this.username = username;
+            this.email = email;
+            firstName = result.getString("firstName");
+            lastName = result.getString("lastName");
+            displayName = result.getString("displayName");
+            return;
+        } catch (SQLException e) {
+            DatabaseConfigurator.displayException(e);
+        }
     }
 
     /**
      * Returns the stored account_ID value.
      * @return int account_ID
      */
-    public int getAccount_ID() {
+    public int getAccount_ID () {
         return account_ID;
     }
 
@@ -117,15 +144,16 @@ public class UserData {
      * Sets the account_ID value.
      * @param account_ID int
      */
-    public void setAccount_ID(int account_ID) {
+    public void setAccount_ID (int account_ID) {
         this.account_ID = account_ID;
+        return;
     }
 
     /**
      * Returns the stored username value.
      * @return String username
      */
-    public String getUsername() {
+    public String getUsername () {
         return username;
     }
 
@@ -135,13 +163,31 @@ public class UserData {
      */
     public void setUsername(String username) {
         this.username = username;
+        return;
+    }
+
+    /**
+     * Returns the email value.
+     * @return String email
+     */
+    public String getEmail () {
+        return email;
+    }
+
+    /**
+     * Sets the email value.
+     * @param email
+     */
+    public void setEmail (String email) {
+        this.email = email;
+        return;
     }
 
     /**
      * Returns the password hash value.
      * @return String hashedPassword
      */
-    public String getHashedPassword() {
+    public String getHashedPassword () {
         return hashedPassword;
     }
 
@@ -149,15 +195,16 @@ public class UserData {
      * Sets the password hash value.
      * @param hashedPassword String
      */
-    public void setHashedPassword(String hashedPassword) {
+    public void setHashedPassword (String hashedPassword) {
         this.hashedPassword = hashedPassword;
+        return;
     }
 
     /**
      * Returns the user first name value.
      * @return String firstName
      */
-    public String getFirstName() {
+    public String getFirstName () {
         return firstName;
     }
 
@@ -165,15 +212,16 @@ public class UserData {
      * Sets the user first name value.
      * @param firstName String
      */
-    public void setFirstName(String firstName) {
+    public void setFirstName (String firstName) {
         this.firstName = firstName;
+        return;
     }
 
     /**
      * Returns the user last name value.
      * @return String lastName
      */
-    public String getLastName() {
+    public String getLastName () {
         return lastName;
     }
 
@@ -181,15 +229,16 @@ public class UserData {
      * Sets the user last name value.
      * @param lastName String
      */
-    public void setLastName(String lastName) {
+    public void setLastName (String lastName) {
         this.lastName = lastName;
+        return;
     }
 
     /**
      * Returns the user display name value.
      * @return String displayName
      */
-    public String getDisplayName() {
+    public String getDisplayName () {
         return displayName;
     }
 
@@ -197,7 +246,8 @@ public class UserData {
      * Sets the user display name value.
      * @param displayName String
      */
-    public void setDisplayName(String displayName) {
+    public void setDisplayName (String displayName) {
         this.displayName = displayName;
+        return;
     }
 }

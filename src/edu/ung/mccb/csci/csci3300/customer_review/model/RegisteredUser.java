@@ -9,11 +9,12 @@ import java.sql.*;
 /**
  * Class that handles user registration and login.
  * <p>
- *     Provided methods register users, hash and salt passwords, and handle login events.
+ *     Provided methods register users, hash and salt passwords, and handle login events. This class is a subclass of the object UserData.
  * </p>
+ * @see edu.ung.mccb.csci.csci3300.customer_review.model.UserData
  * @author Zachary Jones
  */
-public class RegisteredUser { // TODO: refactor this class with narrowed scope
+public class RegisteredUser extends UserData {
     // This class should cover user registration and login tasks only.
     // Supporting methods like password hashing will be required elsewhere for user editing.
 
@@ -24,7 +25,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
     /**
      * Creates a new USER entry in the database.
      * <p>
-     *     Automatically hashes and salts password, passing both hashed password and the generated salt to the database. SQL injection safe.
+     *     Automatically hashes and salts password, passing both hashed password and the generated salt to the database. SQL injection safe. This method automatically loads available data into a UserData object.
      * </p>
      * @param username String
      * @param email String
@@ -36,15 +37,18 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
         String query = "INSERT INTO USER" + "(username, email, password, salt)" + "values(?,?,?,?)";
 
         String passwordSalt = generateSalt();
-        String hashedPassword = hashPassword(password, passwordSalt);
+        super.hashedPassword = hashPassword(password, passwordSalt);
 
         Connection connect = DatabaseConfigurator.getConnection();
-            PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            sqlStatement.setString(1, username);
-            sqlStatement.setString(2, email);
-            sqlStatement.setString(3, hashedPassword);
-            sqlStatement.setString(4, passwordSalt);
-            sqlStatement.executeUpdate();
+        PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+        sqlStatement.setString(1, username);
+        sqlStatement.setString(2, email);
+        sqlStatement.setString(3, super.hashedPassword);
+        sqlStatement.setString(4, passwordSalt);
+        sqlStatement.executeUpdate();
+
+        super.constructNewUser(username, email);
         return;
     }
 
@@ -54,7 +58,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * @param salt String
      * @return String hashedPassword
      */
-    public String hashPassword (String password, String salt) // TODO: relocate to separate class
+    private String hashPassword (String password, String salt) // TODO: relocate to separate class
     {
         String hashedPassword = null;
         try {
@@ -80,7 +84,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * @param password String
      * @return String hashedPassword
      */
-    public String hashPassword (String password) {
+    private String hashPassword (String password) {
         return hashPassword(password, generateSalt());
     }
 
@@ -90,7 +94,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * @param saltLength int length of salt to generate
      * @return String salt
      */
-    public String generateSalt (char[] charArray, int saltLength) {
+    private String generateSalt (char[] charArray, int saltLength) {
         SecureRandom random = new SecureRandom();
 
         char[] salt = new char[saltLength];
@@ -104,7 +108,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * @param saltLength int
      * @return String salt
      */
-    public String generateSalt (int saltLength) {
+    private String generateSalt (int saltLength) {
         return generateSalt(saltArray, saltLength);
     }
 
@@ -113,7 +117,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * @param charArray char[]
      * @return String salt
      */
-    public String generateSalt (char[] charArray) {
+    private String generateSalt (char[] charArray) {
         return generateSalt(charArray, 32);
     }
 
@@ -121,7 +125,7 @@ public class RegisteredUser { // TODO: refactor this class with narrowed scope
      * Alias that sets the character array to alphanumeric and salt length to 32 characters.
      * @return String salt
      */
-    public String generateSalt () {
+    private String generateSalt () {
         return generateSalt (saltArray, 32);
     }
 }
