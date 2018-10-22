@@ -87,4 +87,8 @@ public class Controller {
 
         alert.showAndWait();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> working

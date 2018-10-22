@@ -13,6 +13,55 @@
 <!-- TODO create controller for UserLogin and link it to fx:controller -->
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+   <children>
+      <VBox alignment="CENTER" layoutX="141.0" layoutY="85.0">
+         <children>
+            <Label text="Fake Apples User Login">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" promptText="Username">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin></TextField>
+            <PasswordField fx:id="password" promptText="Password">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </PasswordField>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Login">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Create Account" onAction="#logUserIn">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+   </children>
+=======
+>>>>>>> working
     <children>
         <VBox alignment="CENTER" layoutX="141.0" layoutY="85.0">
             <children>
@@ -57,4 +106,8 @@
         </VBox>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
     </children>
+<<<<<<< HEAD
+=======
+>>>>>>> re-commit to local
+>>>>>>> working
 </AnchorPane>
