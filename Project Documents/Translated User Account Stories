@@ -1,0 +1,41 @@
+1.	As a customer I want to be able to leave a review for this product so that I may tell other potential customers that this product is good or bad.
+Translation: Implement a review submission into the program, allowing a thumbs up or thumbs down button. Could have that be a Boolean with true = good, false = bad.
+
+2.	As a customer I want to be able to rate this product on a scale so that I may show my satisfaction with it.
+Translation: Implement the review submission but instead have a scale of 1-10 or whatever we choose. Could maybe implement a slider in FXML but could have the user also just submit an integer and just make sure it’s not out of bounds of 1-10. Could potentially eliminate the thumbs up/down button and do this instead as this allows for more precise data.
+
+3.	As an online shopper I want to isolate valid reviews to have peace of mind that the product I want to buy is properly reviewed.
+Translation: Implement a filter for the reviews. Combine this with our review submission, especially the anonymous one. Could filter so only shows reviews with accounts or show reviews that are anonymous. Could filter for other things too.
+
+4.	As an online shopper, I want to be able to see a star rating adjusted to fit valid reviews so that I can easily determine the quality of a product.
+Translation: A bit confusing. Could be to implement a rating system like the previously mentioned 1-10. But Acceptance Criteria talks about different stars for verified reviews too. This UAS doesn’t make much sense the way it was written but I think the user wants a way to tell which reviews are “Verified” as opposed to other reviews.
+
+5.	As a reviewer I want this platform to have a system or symbol for certified reviews for others to see. So that people will know who is serious about the reviews and who is trolling.
+Translation: User wants a way to see which reviews are certified or verified. We could implement this in the database. Have it check where the user who submitted the review was anonymous or not and if not, make the user certified/verified. Alternatively, implement a system where we have it so people who bought the product are verified instead but that’d mean that logged in users can review without having bought the product.
+
+6.	As an online shopper I want to see related products with reviews, so that I can make a better decision when purchasing a product.
+Translation: User wants to see similar products to the one they bought. To implement this, we’d have to have multiple products which may be impossible. We’re focusing on just 1 product and all the reviews for it. This could be a bonus/optional thing we can do, depending on whether we completed all our functional requirements first.
+
+7.	As a reviewer, I want to post a review so that I can express my satisfaction toward a place/product.
+Translation: User wants to be able to post a review. For this we just have to continue and finish up our review submission part of the program. 
+
+8.	As a reviewer, I want to edit/delete my review so that I can edit my mistakes/delete it.
+Translation: Add an Edit button for the user. It’d have to go into the database and change the text description for the review submission. This would most likely be a part of the Review Submission part of the program. Could maybe have a profile for Accounts and let Users see all their Reviews made and let them navigate to there though.
+
+9.	As a reseller of products, I want to get real and valuable input from customers so that I can provide the best products.
+Translation: Seller wants to be able to filter through reviews. To see negative and take it as constructive criticism and see the positive and continue what they’re doing right. Could implement some code to look at all reviews for a product, or maybe a snippet of it, and sort by worst or best. Alternatively, look at all reviews of a certain rating. All 1 star reviews, all 5 star reviews, etc.
+
+10.	As a cybersecurity specialist, I want to keep the database secure so that customers can trust me with their data.
+Translation: We’d have to talk to Professor Abegaz and determine how secure our program must be first. Since we’re using SQL though, we’d have to protect against SQL injections and also protect at the login and review submission front so they can’t break our code.
+
+11.	As a customer who is wary of online shopping, I want to be able to sort and view one-star reviews separately from higher rated reviews.
+Translation: If we implement #9, it would knock this one out too. Could filter out all reviews except one star. SQL can sort reviews and look at specific ones if we made a “Rating” column.
+
+12.	As a user with valuable personal information tied to my review account, I want multiple measures in place to secure my account's privacy.
+Translation: User wants their account secure. Professor Abegaz can tell us to what extent we need but this user wants a Captcha code, a required username and password, and an email notifying them if too many incorrect logins have occurred. Login code is already being implemented with a username and password. For Captcha, we’d need to look up how to do that. We already have the user’s email also though during their account registration.
+
+13.	As a user, I want to view all the reviews I have posted.
+Translation: Briefly touched on this before, but we could implement an account profile for the user and have all previous reviews they’ve written shown. Allow the user to click on a review and instantly take them to it. We could combine this also with allowing the user to edit or delete their own review too.
+
+14.	As an administrator, I want to see which reviews are flagged as rejected.
+Translation: This wouldn’t be for the user but for us. First thing would be to determine by which criteria a review would be rejected. Could implement a column for this in the Reviews table maybe, with the data type in the Rejected column being boolean. True meaning it is rejected, and false for not. Maybe combine this with Verified? Could have null for not verified, true for verified, and false for rejected.
