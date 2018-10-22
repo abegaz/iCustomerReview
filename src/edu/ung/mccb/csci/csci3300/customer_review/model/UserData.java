@@ -14,10 +14,11 @@ import java.sql.Statement;
  */
 public class UserData {
 
-    protected int account_ID;
+    protected int account_ID = -1;
     protected String username;
     protected String email;
     protected String hashedPassword;
+    protected String passwordSalt;
     protected String firstName;
     protected String lastName;
     protected String displayName; // TODO: add any additional vars stored about users to this data object
@@ -110,11 +111,13 @@ public class UserData {
     /**
      * A supporting method to initialize the UserData data structure.
      * <p>
-     *     Loads data into the UserData superclass object following a call of {@link RegisteredUser#registerNewUser(String, String, String), RegisteredUser.registerNewUser()}.
+     *     Loads data into the UserData superclass object following a call of {@link RegisteredUser#registerNewUser(String, String, String, String), RegisteredUser.registerNewUser()}.
      * </p>
      * @param username String
      * @param email String
+     * @deprecated
      */
+    @Deprecated
     protected void constructNewUser (String username, String email) {
         setAccountIDbyUsername(username);
         String query = "SELECT * FROM USER WHERE accountID = '" + account_ID + "'";
@@ -200,6 +203,23 @@ public class UserData {
      */
     public void setHashedPassword (String hashedPassword) {
         this.hashedPassword = hashedPassword;
+        return;
+    }
+
+    /**
+     *  Returns the password salt value.
+     * @return String passwordSalt
+     */
+    public String getPasswordSalt () {
+        return passwordSalt;
+    }
+
+    /**
+     * Sets the password salt value.
+     * @param passwordSalt String
+     */
+    public void setPasswordSalt (String passwordSalt) {
+        this.passwordSalt = passwordSalt;
         return;
     }
 

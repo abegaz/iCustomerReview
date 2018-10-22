@@ -4,7 +4,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.nio.charset.StandardCharsets;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Class that handles user registration and login.
@@ -14,13 +17,25 @@ import java.sql.*;
  * @see edu.ung.mccb.csci.csci3300.customer_review.model.UserData
  * @author Zachary Jones
  */
-public class RegisteredUser extends UserData {
+public class RegisteredUser extends UserData { // TODO: add some constructors that auto-call the super methods as necessary to reduce code in controller and if checks in model
     // This class should cover user registration and login tasks only.
     // Supporting methods like password hashing will be required elsewhere for user editing.
 
     public static final char[] saltArray = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
             'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','t','y',
             '1','2','3','4','5','6','7','8','9','0'};
+
+    public RegisteredUser() {}
+
+    public RegisteredUser(String username) {
+        super.setAccountIDbyUsername(username);
+        super.getDataFromUser();
+    }
+
+    public RegisteredUser(int accountID) {
+        super.account_ID = accountID;
+        super.getDataFromUser();
+    }
 
     /**
      * Creates a new USER entry in the database.
@@ -29,27 +44,51 @@ public class RegisteredUser extends UserData {
      * </p>
      * @param username String
      * @param email String
+     * @param displayName String
      * @param password String
      * @throws SQLException
      */
-    public void registerNewUser (String username, String email, String password) throws SQLException
+    public void registerNewUser (String username, String email, String displayName, String password)
     {
-        String query = "INSERT INTO USER" + "(username, email, password, salt)" + "values(?,?,?,?)";
+        String query = "INSERT INTO USER" + "(username, email, displayName, password, salt)" + "values(?,?,?,?,?)"; // TODO: verify table/attribute names vs DB
 
         String passwordSalt = generateSalt();
-        super.hashedPassword = hashPassword(password, passwordSalt);
+        String hashedPassword = hashPassword(password, passwordSalt);
 
-        Connection connect = DatabaseConfigurator.getConnection();
-        PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        try {
+            Connection connect = DatabaseConfigurator.getConnection();
+            PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-        sqlStatement.setString(1, username);
-        sqlStatement.setString(2, email);
-        sqlStatement.setString(3, super.hashedPassword);
-        sqlStatement.setString(4, passwordSalt);
-        sqlStatement.executeUpdate();
+            sqlStatement.setString(1, username);
+            sqlStatement.setString(2, email);
+            sqlStatement.setString(3, displayName);
+            sqlStatement.setString(4, hashedPassword);
+            sqlStatement.setString(5, passwordSalt);
 
-        super.constructNewUser(username, email);
+            sqlStatement.executeUpdate();
+        } catch (SQLException e) {
+            DatabaseConfigurator.displayException(e);
+        }
+
+        super.setAccountIDbyUsername(username);
+        super.getDataFromUser();
+        // super.constructNewUser(username, email);
         return;
+    }
+
+    public boolean verifyLogin (String username, String password) {
+        if (super.getAccount_ID() == -1) {
+            super.setAccountIDbyUsername(username);
+        }
+        if (super.hashedPassword.equals(null)) { // Ideally these should be done at the controller level but I've put safety checks in place just to be sure.
+            super.getDataFromUser();
+        }
+        String hashedPassword = hashPassword(password, super.passwordSalt);
+
+        if (hashedPassword.equals(super.hashedPassword)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -58,8 +97,7 @@ public class RegisteredUser extends UserData {
      * @param salt String
      * @return String hashedPassword
      */
-    private String hashPassword (String password, String salt) // TODO: relocate to separate class
-    {
+    private String hashPassword (String password, String salt) {
         String hashedPassword = null;
         try {
             MessageDigest digester = MessageDigest.getInstance("SHA-256");
