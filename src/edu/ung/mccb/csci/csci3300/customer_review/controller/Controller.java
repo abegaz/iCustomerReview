@@ -14,26 +14,22 @@ import javafx.stage.Stage;
 
 public class Controller {
     @FXML
-    TextField email, username, password, cpassword;
+    TextField email, username, displayName, password, cpassword;
 
-    //pending name based on whats called in view
+    private static int accountID = -1; // This variable is how the entire program tracks the current logged in user. THIS IS IMPORTANT.
 
-    public void createUser(ActionEvent actionEvent) throws Exception{ // TODO: refactor usages of RegisteredUser to reflect UserData data structure
+    public void registerUser (ActionEvent actionEvent) throws Exception {
 
         RegisteredUser user = new RegisteredUser();
-        String userPassword =  password.getText();
-        String confirmUserPassword =  cpassword.getText();
-        boolean isValid= validatePassword(userPassword, confirmUserPassword);
+        boolean isValid= validatePassword(password.getText(), cpassword.getText());
 
         if (isValid) {
+            user.registerNewUser(username.getText(),email.getText(),displayName.getText(),password.getText());
 
-            user.registerNewUser(username.getText(),email.getText(),userPassword);
-            // System.out.println("The salted hash code for the plaintext " + password.getText() + " is " + hashAndSaltedPassword);
+            // logUserIn(); TODO: auto-log in user and send them to the logged-in side of front-end
 
-            // waiting for the Register user page (fxml) to be created
-            
             Stage primaryStage= new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/*"));
+            Parent root = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/UserLogin.fxml"));
             primaryStage.setTitle("iCustomerReview");
             primaryStage.setScene(new Scene(root, 500, 450));
             primaryStage.show();
@@ -43,14 +39,31 @@ public class Controller {
         }
     }
 
-    private static boolean validatePassword(String password, String cPassword) {
+    public void logUserIn (ActionEvent actionEvent) {
+        RegisteredUser user = new RegisteredUser(username.getText());
+        if (user.verifyLogin(username.getText(), password.getText())) {
+            accountID = user.getAccount_ID();
+
+            // code here for loading a new FXML window TODO: add user front-end for logged-in users and load it here.
+            return;
+        }
+        accountID = -1;
+        return;
+    }
+
+    private static boolean validatePassword (String password, String cPassword) {
         if (password.equals(cPassword)) {
-            // Password excepts ! as a special character 
+            // Password excepts ! as a special character
             //regex
             if ((password.matches("^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=]).*$")))
                 return true;
-            else
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setContentText("The password entered does not meet the password requirements. Please see character requirements for more information.");
+                alert.showAndWait();
                 return false;
+            }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -61,7 +74,7 @@ public class Controller {
         }
     }
 
-    private void message () {
+    private static void message () {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Password Requirements");
         alert.setHeaderText("The password entered here  is invalid");
@@ -72,16 +85,5 @@ public class Controller {
                 "Password should have at least special character.\n ");
 
         alert.showAndWait();
-    }
-    
-     //pending name based on whats called in view
-    
-    public void userCreate(ActionEvent actionEvent) {
-        RegisteredUser model = new RegisteredUser();
-        /*boolean isRegistered = model.verifyLogin(password.getText(), username.getText());
-        if(isRegistered)
-        {
-            System.out.println("User login Successful!");
-        }*/
     }
 }
