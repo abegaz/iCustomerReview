@@ -70,6 +70,7 @@ public class Controller {
             alert.setTitle("Password mismatch");
             alert.setHeaderText("Please re-enter the password");
             alert.setContentText("The Password must mach, please Please re-enter the password");
+            alert.showAndWait();
             return false;
         }
     }
@@ -83,7 +84,6 @@ public class Controller {
                 "Password should contain at least one uppercase letter .\n" +
                 "Password should contain at least one digit .\n" +
                 "Password should have at least special character.\n ");
-
         alert.showAndWait();
     }
 }
