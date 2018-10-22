@@ -25,4 +25,8 @@
 *.tar.gz
 *.rar
 
+<<<<<<< HEAD
 out/*
+=======
+out/*
+>>>>>>> re-commit to local

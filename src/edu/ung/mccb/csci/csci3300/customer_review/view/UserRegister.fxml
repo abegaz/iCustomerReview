@@ -9,6 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 <GridPane alignment="center" hgap="10" prefHeight="599.0" prefWidth="703.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
+<<<<<<< HEAD
    <children>
       <AnchorPane prefHeight="610.0" prefWidth="699.0">
          <children>
@@ -32,4 +33,29 @@
    <rowConstraints>
       <RowConstraints />
    </rowConstraints>
+=======
+    <children>
+        <AnchorPane prefHeight="610.0" prefWidth="699.0">
+            <children>
+                <TextField fx:id="username" layoutX="63.0" layoutY="102.0" promptText="Username" />
+                <TextField fx:id="password" layoutX="393.0" layoutY="102.0" promptText="Password" />
+                <TextField fx:id="displayName" layoutX="63.0" layoutY="157.0" promptText="Display Name" />
+                <TextField fx:id="cpassword" layoutX="393.0" layoutY="157.0" promptText="Verify Password" />
+                <TextField fx:id="email" layoutX="63.0" layoutY="221.0" prefHeight="27.0" prefWidth="364.0" promptText="Email Address" />
+                <Text layoutX="201.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Registration" textAlignment="CENTER" wrappingWidth="266.21875" />
+                <Button layoutX="296.0" layoutY="376.0" mnemonicParsing="false" onAction="#registerUser" text="Submit" />
+                <Text fill="#ff0808" layoutX="231.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                <Text fill="#f80303" layoutX="63.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                <Text layoutX="69.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" means field is optional" />
+
+            </children>
+        </AnchorPane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+>>>>>>> re-commit to local
 </GridPane>
