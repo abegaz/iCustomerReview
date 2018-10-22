@@ -84,13 +84,7 @@ public class Controller {
                 "Password should contain at least one uppercase letter .\n" +
                 "Password should contain at least one digit .\n" +
                 "Password should have at least special character.\n ");
-<<<<<<< HEAD
-        alert.showAndWait();
-    }
-}
-=======
 
         alert.showAndWait();
     }
 }
->>>>>>> re-commit to local

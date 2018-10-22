@@ -27,8 +27,7 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
 
     public RegisteredUser() {}
 
-<<<<<<< HEAD
-=======
+
     /**
      * Constructor that parses a username to build a UserData object.
      * <p>
@@ -36,14 +35,11 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      * </p>
      * @param username String
      */
->>>>>>> re-commit to local
     public RegisteredUser(String username) {
         super.setAccountIDbyUsername(username);
         super.getDataFromUser();
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Constructor that parses an account to build a UserData object.
      * <p>
@@ -51,7 +47,6 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      * </p>
      * @param accountID int
      */
->>>>>>> re-commit to local
     public RegisteredUser(int accountID) {
         super.account_ID = accountID;
         super.getDataFromUser();
@@ -130,13 +125,8 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
                 assembler.append(Integer.toString((hashBytes[i] & 0xff) + 0x100, 16).substring(1));
 
             hashedPassword = assembler.toString();
-<<<<<<< HEAD
             } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
             return hashedPassword;
-=======
-        } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
-        return hashedPassword;
->>>>>>> re-commit to local
     }
 
     /**
