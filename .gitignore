@@ -3,6 +3,9 @@
 *.xml
 *.html
 *.iml
+.idea/*.xml
+.idea/*.iml
+.idea/*.html
 
 .idea/workspace.xml
 .idea/tasks.xml
