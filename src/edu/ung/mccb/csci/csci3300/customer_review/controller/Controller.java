@@ -61,6 +61,7 @@ public class Controller {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setContentText("The password entered does not meet the password requirements. Please see character requirements for more information.");
+                alert.showAndWait();
                 return false;
             }
         }
