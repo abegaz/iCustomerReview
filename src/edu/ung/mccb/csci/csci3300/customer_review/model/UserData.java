@@ -55,7 +55,7 @@ public class UserData {
      */
     public void setAccountIDbyUsername (String username) { // TODO: Method not working, fix.
         String query = "SELECT account_ID FROM ACCOUNT WHERE username = '" + username + "'";
-        try {
+        try { // TODO: refactor for using email as soft key not username
             Connection connect = DatabaseConfigurator.getConnection();
             Statement sqlStatement = connect.createStatement();
             ResultSet result = sqlStatement.executeQuery(query);
