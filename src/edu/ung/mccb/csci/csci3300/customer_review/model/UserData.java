@@ -16,12 +16,12 @@ public class UserData {
 
     protected int account_ID = -1;
     protected String username;
-    protected String email;
     protected String hashedPassword;
     protected String passwordSalt;
+    protected String email;
     protected String firstName;
     protected String lastName;
-    protected String displayName; // TODO: add any additional vars stored about users to this data object
+    //protected String displayName; // TODO: add any additional vars stored about users to this data object
 
     /**
      * Default constructor that loads an empty UserData object.
@@ -84,7 +84,7 @@ public class UserData {
             hashedPassword = result.getString("hashedPassword"); // TODO: double-check table column names and correct as necessary
             firstName = result.getString("firstName");
             lastName = result.getString("lastName");
-            displayName = result.getString("displayName");
+            //displayName = result.getString("displayName");
             return;
         } catch (SQLException e) {
             DatabaseConfigurator.displayException(e);
@@ -96,7 +96,7 @@ public class UserData {
      * <p>Updates the USER entry with the corresponding account_ID with the values currently assigned to the instance variables of the UserData object.</p>
      */
     public void assignDataToUser () {
-        String query = "UPDATE USER SET username='" + username + "',hashedPassword='" + hashedPassword + "',firstName='" + firstName + "',lastName='" + lastName + "',displayName='" + displayName + "'WHERE accountID='" + account_ID + "'";
+        String query = "UPDATE USER SET username='" + username + "',hashedPassword='" + hashedPassword + "',firstName='" + firstName + "',lastName='" + lastName + "'WHERE accountID='" + account_ID + "'";
 
         try {
             Connection connect = DatabaseConfigurator.getConnection();
@@ -131,7 +131,7 @@ public class UserData {
             this.email = email;
             firstName = result.getString("firstName");
             lastName = result.getString("lastName");
-            displayName = result.getString("displayName");
+            //displayName = result.getString("displayName");
             return;
         } catch (SQLException e) {
             DatabaseConfigurator.displayException(e);
@@ -260,17 +260,17 @@ public class UserData {
     /**
      * Returns the user display name value.
      * @return String displayName
-     */
+
     public String getDisplayName () {
         return displayName;
-    }
+    }*/
 
     /**
      * Sets the user display name value.
      * @param displayName String
-     */
+
     public void setDisplayName (String displayName) {
         this.displayName = displayName;
         return;
-    }
+    }*/
 }
