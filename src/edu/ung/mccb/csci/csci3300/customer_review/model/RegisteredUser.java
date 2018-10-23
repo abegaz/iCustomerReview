@@ -64,7 +64,7 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      */
     public void registerNewUser (String username, String email, String displayName, String password)
     {
-        String query = "INSERT INTO USER" + "(username, email, displayName, password, salt)" + "values(?,?,?,?,?)"; // TODO: verify table/attribute names vs DB
+        String query = "INSERT INTO ACCOUNT" + "(username, password_hash, password_salt, email)" + "values(?,?,?,?)"; // TODO: verify table/attribute names vs DB
 
         String passwordSalt = generateSalt();
         String hashedPassword = hashPassword(password, passwordSalt);
@@ -74,10 +74,9 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
             PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             sqlStatement.setString(1, username);
-            sqlStatement.setString(2, email);
-            sqlStatement.setString(3, displayName);
-            sqlStatement.setString(4, hashedPassword);
-            sqlStatement.setString(5, passwordSalt);
+            sqlStatement.setString(2, hashedPassword);
+            sqlStatement.setString(3, passwordSalt);
+            sqlStatement.setString(4, email);
 
             sqlStatement.executeUpdate();
         } catch (SQLException e) {
