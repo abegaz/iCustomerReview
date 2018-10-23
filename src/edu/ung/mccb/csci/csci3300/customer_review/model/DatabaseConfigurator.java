@@ -11,7 +11,7 @@ public class DatabaseConfigurator {
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
-    private static final String CONN_STRING = "jdbc:mysql://localhost/customer_review_db";
+    private static final String CONN_STRING = "jdbc:mysql://localhost/fakeapples";
 
     /**
      * Establishes a connection to the database to transmit SQL syntax.

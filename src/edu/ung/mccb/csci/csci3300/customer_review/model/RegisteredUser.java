@@ -46,10 +46,10 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      * </p>
      * @param accountID int
      */
-    public RegisteredUser(int accountID) {
+    /*public RegisteredUser(int accountID) {
         super.account_ID = accountID;
         super.getDataFromUser();
-    }
+    }*/
 
     /**
      * Creates a new USER entry in the database.
@@ -64,7 +64,7 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      */
     public void registerNewUser (String username, String email, String displayName, String password)
     {
-        String query = "INSERT INTO ACCOUNT" + "(username, password_hash, password_salt, email)" + "values(?,?,?,?)"; // TODO: verify table/attribute names vs DB
+        String query = "INSERT INTO ACCOUNT" + "(username, displayname, password_hash, password_salt, email)" + "values(?,?,?,?,?)"; // TODO: verify table/attribute names vs DB
 
         String passwordSalt = generateSalt();
         String hashedPassword = hashPassword(password, passwordSalt);
@@ -74,25 +74,26 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
             PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             sqlStatement.setString(1, username);
-            sqlStatement.setString(2, hashedPassword);
-            sqlStatement.setString(3, passwordSalt);
-            sqlStatement.setString(4, email);
+            sqlStatement.setString(2, displayName);
+            sqlStatement.setString(3, hashedPassword);
+            sqlStatement.setString(4, passwordSalt);
+            sqlStatement.setString(5, email);
 
             sqlStatement.executeUpdate();
         } catch (SQLException e) {
             DatabaseConfigurator.displayException(e);
         }
 
-        super.setAccountIDbyUsername(username);
+        //super.setAccountIDbyUsername(username);
         super.getDataFromUser();
         // super.constructNewUser(username, email);
         return;
     }
 
     public boolean verifyLogin (String username, String password) {
-        if (super.getAccount_ID() == -1) {
+        /*if (super.getAccount_ID() == -1) {
             super.setAccountIDbyUsername(username);
-        }
+        }*/
         if (super.hashedPassword.equals(null)) { // Ideally these should be done at the controller level but I've put safety checks in place just to be sure.
             super.getDataFromUser();
         }
