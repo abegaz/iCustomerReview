@@ -53,7 +53,7 @@ public class UserData {
      * Sets account_ID based on the provided username.
      * @param username Username string of the user record in the database.
      */
-    public void setAccountIDbyUsername (String username) {
+    public void setAccountIDbyUsername (String username) { // TODO: Method not working, fix.
         String query = "SELECT account_ID FROM ACCOUNT WHERE username = '" + username + "'";
         try {
             Connection connect = DatabaseConfigurator.getConnection();
