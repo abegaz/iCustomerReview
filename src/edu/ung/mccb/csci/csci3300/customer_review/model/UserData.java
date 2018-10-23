@@ -59,8 +59,16 @@ public class UserData {
             Connection connect = DatabaseConfigurator.getConnection();
             Statement sqlStatement = connect.createStatement();
             ResultSet result = sqlStatement.executeQuery(query);
+            if (result.next() == false) {
+                System.out.println("ResultSet in empty in Java");
+            } else {
 
-            account_ID = result.getInt("accountID");
+                do {
+
+                    account_ID = result.getInt("accountID");
+                } while (result.next());
+            }
+
         }
         catch (SQLException e) {
             System.out.println("Operation failed due to SQL exception:\n" + e);
@@ -79,12 +87,22 @@ public class UserData {
             Statement sqlStatement = connect.createStatement();
             ResultSet result = sqlStatement.executeQuery(query);
 
-            username = result.getString("username");
-            email = result.getString("email");
-            hashedPassword = result.getString("hashedPassword"); // TODO: double-check table column names and correct as necessary
-            firstName = result.getString("firstName");
-            lastName = result.getString("lastName");
-            displayName = result.getString("displayName");
+            if (result.next() == false) {
+                System.out.println("ResultSet in empty in Java");
+            } else {
+
+                do {
+                    username = result.getString("username");
+                    email = result.getString("email");
+                    hashedPassword = result.getString("hashedPassword"); // TODO: double-check table column names and correct as necessary
+                    firstName = result.getString("firstName");
+                    lastName = result.getString("lastName");
+                    displayName = result.getString("displayName");
+                } while (result.next());
+            }
+
+
+
             return;
         } catch (SQLException e) {
             DatabaseConfigurator.displayException(e);
