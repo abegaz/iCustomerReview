@@ -91,9 +91,9 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
     }
 
     public boolean verifyLogin (String username, String password) {
-        /*if (super.getAccount_ID() == -1) {
+        if (super.getAccount_ID() == -1) {
             super.setAccountIDbyUsername(username);
-        }*/
+        }
         if (super.hashedPassword.equals(null)) { // Ideally these should be done at the controller level but I've put safety checks in place just to be sure.
             super.getDataFromUser();
         }

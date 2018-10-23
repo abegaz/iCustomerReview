@@ -33,12 +33,12 @@
             </PasswordField>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Login">
+                  <Button mnemonicParsing="false" text="Login" onAction="#logUserIn">
                      <HBox.margin>
                         <Insets right="8.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Create Account" onAction="#logUserIn">
+                  <Button mnemonicParsing="false" text="Create Account">
                      <HBox.margin>
                         <Insets left="8.0" />
                      </HBox.margin>

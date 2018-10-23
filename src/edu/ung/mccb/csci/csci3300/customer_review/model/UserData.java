@@ -65,7 +65,7 @@ public class UserData {
 
                 do {
 
-                    account_ID = result.getInt("accountID");
+                    account_ID = result.getInt("account_ID");
                 } while (result.next());
             }
 
@@ -80,28 +80,23 @@ public class UserData {
      * Pulls the data for the stored account_ID from the database
      * <p>Queries the database for the USER entry based on the stored account_ID. Returned attribute values are assigned to the instance variables of the UserData object.</p>
      */
-    public void getDataFromUser () {
+    public void getDataFromUser () { // TODO: DEBUG
         String query = "SELECT * FROM ACCOUNT WHERE account_ID = '" + account_ID + "'";
         try {
             Connection connect = DatabaseConfigurator.getConnection();
             Statement sqlStatement = connect.createStatement();
             ResultSet result = sqlStatement.executeQuery(query);
 
-            if (result.next() == false) {
+            if (!result.next()) {
                 System.out.println("ResultSet in empty in Java");
-            } else {
-
-                do {
-                    username = result.getString("username");
-                    email = result.getString("email");
-                    hashedPassword = result.getString("hashedPassword"); // TODO: double-check table column names and correct as necessary
-                    firstName = result.getString("firstName");
-                    lastName = result.getString("lastName");
-                    displayName = result.getString("displayName");
-                } while (result.next());
+                return;
             }
-
-
+            username = result.getString("username");
+            email = result.getString("email");
+            hashedPassword = result.getString("hashedPassword");
+            firstName = result.getString("firstName");
+            lastName = result.getString("lastName");
+            displayName = result.getString("displayName");
 
             return;
         } catch (SQLException e) {
@@ -290,5 +285,16 @@ public class UserData {
     public void setDisplayName (String displayName) {
         this.displayName = displayName;
         return;
+    }
+
+    public String toString () { // debug method for printing entire data structure
+        return "Account ID: " + account_ID +
+        "\nUsername: " + username +
+        "\nHashed Password: " + hashedPassword +
+        "\nPassword Salt: " + passwordSalt +
+        "\nEmail: " + email +
+        "\nFirst Name: " + firstName +
+        "\nLast Name: " + lastName +
+        "\nDisplay Name: " + displayName;
     }
 }

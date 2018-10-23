@@ -40,7 +40,13 @@ public class Controller {
     }
 
     public void logUserIn (ActionEvent actionEvent) {
-        RegisteredUser user = new RegisteredUser(username.getText());
+        RegisteredUser user = new RegisteredUser();
+        System.out.println(user);
+        user.setAccountIDbyUsername(username.getText());
+        System.out.println(user);
+        user.getDataFromUser();
+        System.out.println(user);
+
         if (user.verifyLogin(username.getText(), password.getText())) {
             accountID = user.getAccount_ID();
 
