@@ -19,6 +19,10 @@ public class Controller {
 
     private static int accountID = -1; // This variable is how the entire program tracks the current logged in user. THIS IS IMPORTANT.
 
+    
+    ///this method needs to stay it jiust needs to be reworkes, logic and the values 
+    
+    
     public void registerUser (ActionEvent actionEvent) throws Exception {
 
         RegisteredUser user = new RegisteredUser();
@@ -39,7 +43,7 @@ public class Controller {
             message ();
         }
     }
-
+/*
     public void logUserIn (ActionEvent actionEvent) {
         RegisteredUser user = new RegisteredUser();
         System.out.println(user);
@@ -94,4 +98,5 @@ public class Controller {
 
         alert.showAndWait();
     }
+    */
 }
