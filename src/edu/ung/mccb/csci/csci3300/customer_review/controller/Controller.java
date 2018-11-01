@@ -35,16 +35,16 @@ public class Controller {
           //New stage is generated, shouls this stage go to the display review for the Products fxml
 
            Stage primaryStage= new Stage();
-           Parent root = FXMLLoader.load(getClass().getResource("*"));
+           Parent root = FXMLLoader.load(getClass().getResource("*")); //route to product page
            primaryStage.setTitle("*");
-           primaryStage.setScene(new Scene(root, 425, 400));
+           primaryStage.setScene(new Scene(root, 500, 500));
            primaryStage.show();
 
        }
 
        else
        {
-         //message or another window that displays the an error message rejecting the review that submitted
+         //message or another window that displays an error message rejecting the review that the user submitted
        }
         */
 
