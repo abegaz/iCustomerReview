@@ -25,7 +25,7 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
             'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','t','y',
             '1','2','3','4','5','6','7','8','9','0'};
 
-    public RegisteredUser() {}
+    public RegisteredUser () {}
 
     /**
      * Constructor that parses a username to build a UserData object.
@@ -46,10 +46,10 @@ public class RegisteredUser extends UserData { // TODO: add some constructors th
      * </p>
      * @param accountID int
      */
-    /*public RegisteredUser(int accountID) {
+    public RegisteredUser(int accountID) {
         super.account_ID = accountID;
         super.getDataFromUser();
-    }*/
+    }
 
     /**
      * Creates a new USER entry in the database.
