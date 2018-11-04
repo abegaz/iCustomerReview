@@ -25,7 +25,7 @@
                   <Image url="@CaptchaImage.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha" />
+            <TextField fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
          </children></Pane>
    </children>
 </AnchorPane>
