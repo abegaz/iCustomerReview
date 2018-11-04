@@ -77,7 +77,7 @@ public class Controller {
          * Loop iterates 3 times. First-position and second-position values are generated on pass 1.
          * Third and fourth-position values are generated on passes 2 and 3 respectively.
          */
-        System.out.println("Generated IP:");
+        System.out.println("Generated IP:" + buildIP); // console print for integration testing
         return buildIP;
     }
 
