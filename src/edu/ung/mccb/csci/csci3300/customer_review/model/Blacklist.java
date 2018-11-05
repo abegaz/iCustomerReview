@@ -25,7 +25,7 @@ public class Blacklist {
         return false;
     }
 
-        /* Insert a new blacklisted IP to database */
+    /* Insert a new blacklisted IP to database */
     public void insertBlacklist(String ip){
         String query = "INSERT INTO blacklist" + "(ipAddress)" + "values(?)";
         try {
@@ -34,10 +34,6 @@ public class Blacklist {
             e.printStackTrace();
         }
     }
-
-    /* Flag a review as fake and blacklist the IP */
-
-
 
     /* Finds reviews from database that are blacklisted */
     public void findBlacklistedReviews(int ID){

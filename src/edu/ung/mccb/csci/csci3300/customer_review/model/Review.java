@@ -92,6 +92,12 @@ public class Review {
         return results;
     }
 
+    /* Flag a review as fake and blacklist the IP */
+    public void flagReview(String query, String IP, int i){
+        query = "UPDATE review SET isValid = false WHERE postingIP = ?";
+        updateDatabase(query, IP, -1);
+    }
+
     /* Commonality method for database connection */
     public ResultSet connectionHelper (String query, String s, int i) throws Exception {
         try {
@@ -107,6 +113,28 @@ public class Review {
             e.printStackTrace();
         };
         return results = preparedStatement.executeQuery();
+    }
+
+    /* Updates Database with prepared statement, requires different execute */
+    public void updateDatabase(String query, String s, int i){
+        try{
+            connect = DatabaseConfigurator.getConnection();
+            preparedStatement = connect.prepareStatement(query);
+
+            if (s != "" && i == -1) {
+                preparedStatement.setString(1, s);
+                preparedStatement.executeUpdate();
+            }
+            else if (i != -1 && s == "") {
+                preparedStatement.setInt(1, i);
+                preparedStatement.executeUpdate();
+            }
+            else if (s == "" && i == -1) {
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        };
     }
 
     /* Gets results from query for Review table */
