@@ -20,6 +20,12 @@
                </cursor></Slider>
             <Button layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
             <Text layoutX="30.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
+            <ImageView fitHeight="68.0" fitWidth="149.0" layoutX="15.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CaptchaImage.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
          </children></Pane>
    </children>
 </AnchorPane>

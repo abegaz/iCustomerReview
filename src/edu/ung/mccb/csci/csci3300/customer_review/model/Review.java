@@ -1,6 +1,6 @@
 package edu.ung.mccb.csci.csci3300.customer_review.model;
 
-public class Review {
+public class Review { // TODO: What purpose does this class actually serve if all its active methods are being outsourced to model.DatabaseHelper??
 
     private int reviewID;
     private String reviewText;
