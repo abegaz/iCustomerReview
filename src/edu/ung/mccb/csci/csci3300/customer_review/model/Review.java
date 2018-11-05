@@ -92,6 +92,7 @@ public class Review {
         return results;
     }
 
+    /* Flag a review as fake and blacklist the IP */
     public void flagReview(String query, String IP, int i){
         query = "UPDATE review SET isValid = false WHERE postingIP = ?";
         updateDatabase(query, IP, -1);
@@ -114,6 +115,7 @@ public class Review {
         return results = preparedStatement.executeQuery();
     }
 
+    /* Updates Database with prepared statement, requires different execute */
     public void updateDatabase(String query, String s, int i){
         try{
             connect = DatabaseConfigurator.getConnection();
