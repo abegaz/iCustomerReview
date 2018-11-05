@@ -5,12 +5,12 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Review { // TODO: What purpose does this class actually serve if all its active methods are being outsourced to model.DatabaseHelper??
+public class Review {
 
-    private static Connection connect;
-    private static Statement statement;
-    private static PreparedStatement preparedStatement;
-    private static ResultSet results;
+    private Connection connect;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet results;
     private Scanner scan = new Scanner(System.in);
 
     private int reviewID;
@@ -51,7 +51,7 @@ public class Review { // TODO: What purpose does this class actually serve if al
     public void readReview() {
             String query = "Select * from review";
         try {
-            connectionHelper(query, "", -1);
+            getReviewResults(connectionHelper(query, "", -1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class Review { // TODO: What purpose does this class actually serve if al
     public void readReview(int ID) {
         String query = "Select * from review where reviewID = ?";
         try {
-            connectionHelper(query, "", ID);
+            getReviewResults(connectionHelper(query, "", ID));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class Review { // TODO: What purpose does this class actually serve if al
     public void readRatings (int rating) {
         String query = "Select * from review where rating = ?";
         try {
-            connectionHelper(query, "", rating);
+            getReviewResults(connectionHelper(query, "", rating));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class Review { // TODO: What purpose does this class actually serve if al
     public void readReview(String IP) {
         String query = "Select * from review where postingIP = ?";
         try {
-            connectionHelper(query, IP, -1);
+            getReviewResults(connectionHelper(query, IP, -1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,8 +108,8 @@ public class Review { // TODO: What purpose does this class actually serve if al
         return results = preparedStatement.executeQuery();
     }
 
-    /* Prints results to console */
-    public void printResults (ResultSet results){
+    /* Gets results from query for Review table */
+    public void getReviewResults(ResultSet results){
         try {
             if (!results.next()) {
                 System.out.println("ResultSet in empty in Java");
@@ -123,6 +123,10 @@ public class Review { // TODO: What purpose does this class actually serve if al
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /* Prints results to console */
+    public void printResults (ResultSet results){
         System.out.printf("%-5s%-15s%-10s%-10s%-10s","ID","IP Address","Rating","Valid","Review");
         System.out.println();
         System.out.println("----------------------------------------------------------------------");
@@ -154,49 +158,6 @@ public class Review { // TODO: What purpose does this class actually serve if al
         }
         System.out.println(count);
         return count;
-    }
-
-    /* Pull review from database and then flag postingIP as blacklisted
-    public void insertBlacklist(int ID){
-
-
-
-        try {
-            connect = DatabaseConfigurator.getConnection();
-            preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,x);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        String query = "INSERT INTO blacklist" + "(ipAddress)" + "values(?)";
-
-
-    }*/
-
-    /* Insert a new blacklisted IP to database */
-    public void insertBlacklist(String ip){
-        String query = "INSERT INTO blacklist" + "(ipAddress)" + "values(?)";
-        boolean input = false;
-        do {
-            if (isValidIP(ip)) {
-                try {
-                    connect = DatabaseConfigurator.getConnection();
-                    preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                    preparedStatement.setString(1, ip);
-                    preparedStatement.executeUpdate();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                input = true;
-            } else {
-                System.out.print("Please enter a valid IP: ");
-                ip = scan.nextLine();
-            }
-        } while (!input);
     }
 
     /* Verifies IP address is a valid IP */
