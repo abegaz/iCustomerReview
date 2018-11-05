@@ -81,7 +81,7 @@ public class Review {
     }
 
     /* Read all Review(s) based upon the postingIP */
-    public void readReview(String IP) {
+    public ResultSet readReview(String IP) {
         String query = "Select * from review where postingIP = ?";
         try {
             getReviewResults(connectionHelper(query, IP, -1));
@@ -89,6 +89,7 @@ public class Review {
             e.printStackTrace();
         }
         printResults(results);
+        return results;
     }
 
     /* Commonality method for database connection */
@@ -99,7 +100,7 @@ public class Review {
 
             if (s != "" && i == -1)
                 preparedStatement.setString(1, s);
-            else if (i != 0 && s == "")
+            else if (i != -1 && s == "")
                 preparedStatement.setInt(1, i);
             else if (s == "" && i == -1);
         } catch (SQLException e) {

@@ -10,7 +10,22 @@ public class Blacklist {
     private int ipListID;
     private String ipAddress;
 
-    /* Insert a new blacklisted IP to database */
+    /* Check IP of post to see if it's been blacklisted */
+    public boolean isBlacklisted (String IP) {
+        String query = "SELECT * FROM blacklist WHERE ipAddress =?";
+        try {
+            rv.connectionHelper(query, IP, -1);
+            if (results.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+        /* Insert a new blacklisted IP to database */
     public void insertBlacklist(String ip){
         String query = "INSERT INTO blacklist" + "(ipAddress)" + "values(?)";
         try {
@@ -19,6 +34,10 @@ public class Blacklist {
             e.printStackTrace();
         }
     }
+
+    /* Flag a review as fake and blacklist the IP */
+
+
 
     /* Finds reviews from database that are blacklisted */
     public void findBlacklistedReviews(int ID){
