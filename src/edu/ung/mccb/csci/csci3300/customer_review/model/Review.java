@@ -50,33 +50,62 @@ public class Review { // TODO: What purpose does this class actually serve if al
     /* Read all the Reviews */
     public void readReview() {
             String query = "Select * from review";
-
-            try {
-                connect = DatabaseConfigurator.getConnection();
-                preparedStatement = connect.prepareStatement(query);
-                results = preparedStatement.executeQuery();
-                printResults(results);
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        try {
+            connectionHelper(query, "", -1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        printResults(results);
     }
 
     /* Read a selected Review based upon the primary key */
     public void readReview(int ID) {
         String query = "Select * from review where reviewID = ?";
+        try {
+            connectionHelper(query, "", ID);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        printResults(results);
+    }
 
+    /* Read all Review(s) based upon the rating */
+    public void readRatings (int rating) {
+        String query = "Select * from review where rating = ?";
+        try {
+            connectionHelper(query, "", rating);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        printResults(results);
+    }
+
+    /* Read all Review(s) based upon the postingIP */
+    public void readReview(String IP) {
+        String query = "Select * from review where postingIP = ?";
+        try {
+            connectionHelper(query, IP, -1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        printResults(results);
+    }
+
+    /* Commonality method for database connection */
+    public ResultSet connectionHelper (String query, String s, int i) throws Exception {
         try {
             connect = DatabaseConfigurator.getConnection();
             preparedStatement = connect.prepareStatement(query);
-            preparedStatement.setInt(1, ID);
-            results = preparedStatement.executeQuery();
 
-
+            if (s != "" && i == -1)
+                preparedStatement.setString(1, s);
+            else if (i != 0 && s == "")
+                preparedStatement.setInt(1, i);
+            else if (s == "" && i == -1);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
+        };
+        return results = preparedStatement.executeQuery();
     }
 
     /* Prints results to console */
@@ -101,7 +130,7 @@ public class Review { // TODO: What purpose does this class actually serve if al
         System.out.println();
     }
 
-    /* Returns the count number of table inputed */
+    /* Returns the count number of a specified table for range checking*/
     public int tableCount(String table){
         int count = 0;
         String query = "Select COUNT(*) from " + table;
