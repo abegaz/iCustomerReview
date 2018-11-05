@@ -39,22 +39,10 @@ public class Controller {
                 System.out.println("Operation failed due to SQL Exception:\n");
                 DatabaseConfigurator.displayException(e);
             }
-            try {
-                changeScene(2);
-            } catch (IOException e) {
-                System.out.println("ERROR: Unhandled exception loading scene from FXML. Application terminated.\n\nPrinting stack trace...");
-                e.printStackTrace();
-                System.exit(-1);
-            }
+            changeScene(2);
             return;
         } else {
-            try {
-                changeScene(0);
-            } catch (IOException e) {
-                System.out.println("ERROR: Unhandled exception loading scene from FXML. Application terminated.\n\nPrinting stack trace...");
-                e.printStackTrace();
-                System.exit(-1);
-            }
+            changeScene(0);
         }
     }
 
@@ -67,17 +55,12 @@ public class Controller {
         String buildIP = "";
         Random RNG = new Random();
 
-        for (int i = 0; i < 3; i++) { // TODO: quick integration testing
+        for (int i = 0; i < 3; i++) {
             if (buildIP.equals("")) {
                 buildIP = Integer.toString(RNG.nextInt(256));
             }
             buildIP = buildIP + "." + RNG.nextInt(256);
         }
-        /*
-         * Loop iterates 3 times. First-position and second-position values are generated on pass 1.
-         * Third and fourth-position values are generated on passes 2 and 3 respectively.
-         */
-        System.out.println("Generated IP:" + buildIP); // console print for integration testing
         return buildIP;
     }
 
@@ -86,7 +69,7 @@ public class Controller {
         return false; // TEMPORARY
     }
 
-    public void changeScene (int sceneID) throws IOException { // TODO: integration testing
+    public void changeScene (int sceneID) { // TODO: integration testing
         Stage newStage = new Stage();
 
         switch(sceneID) {
@@ -99,16 +82,28 @@ public class Controller {
                 return;
             }
             case 1: { // review submit page
-                Parent sceneFile = FXMLLoader.load(getClass().getResource("view/UserReview.fxml"));
-                newStage.setTitle("Submit a Review");
-                newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+                try {
+                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
+                    newStage.setTitle("Submit a Review");
+                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+                } catch (IOException e) {
+                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
+                    e.printStackTrace();
+                    System.exit(-1);
+                }
 
                 break;
             }
             case 2: { // read reviews page
-                Parent sceneFile = FXMLLoader.load(getClass().getResource("view/Products.fxml"));
-                newStage.setTitle("Product Reviews");
-                newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+                try {
+                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
+                    newStage.setTitle("Product Reviews");
+                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+                } catch (IOException e) {
+                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
+                    e.printStackTrace();
+                    System.exit(-1);
+                }
 
                 break;
             }
