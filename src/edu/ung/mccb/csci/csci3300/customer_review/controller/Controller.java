@@ -47,8 +47,15 @@ public class Controller {
     }
 
     public boolean verifyCaptcha () {
-        // TODO: method body
-        return false; // TEMPORARY
+        String uCaptcha = captcha.getText();
+        String cCaptcha = "1j93k9L";
+        if (uCaptcha.equals(cCaptcha)){
+        return true;
+        }
+        else{
+            return false;
+
+        }
     }
 
     public static String logIP() { // TODO: create 1 in 10 chance of returning a blacklist IP from database ... for testing purposes
