@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Controller {
     @FXML
-    TextField reviewText;
+    TextField reviewText, captcha; 
     Slider rating;
     private String IP;
 
