@@ -49,7 +49,7 @@ public class Review {
     }
     /* Read all the Reviews */
     public void readReview() {
-            String query = "Select * from review";
+            String query = "Select * from review where isValid = 1";
         try {
             getReviewResults(connectionHelper(query, "", -1));
         } catch (Exception e) {
@@ -93,8 +93,8 @@ public class Review {
     }
 
     /* Flag a review as fake and blacklist the IP */
-    public void flagReview(String query, String IP, int i){
-        query = "UPDATE review SET isValid = false WHERE postingIP = ?";
+    public void flagReview(String IP){
+        String query = "UPDATE review SET isValid = false WHERE postingIP = ?";
         updateDatabase(query, IP, -1);
     }
 
@@ -143,11 +143,14 @@ public class Review {
             if (!results.next()) {
                 System.out.println("ResultSet in empty in Java");
             } else {
-                reviewID = results.getInt("reviewID");
-                postingIP = results.getString("postingIP");
-                reviewText = results.getString("reviewText");
-                rating = results.getInt("rating");
-                isValid = results.getBoolean("isValid");
+                while (results.next()){
+                    //reviewID = results.getInt("reviewID");
+                    //postingIP = results.getString("postingIP");
+                    reviewText = results.getString("reviewText");
+                    rating = results.getInt("rating");
+                    //isValid = results.getBoolean("isValid");
+                    printWebResults(results);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,10 +159,19 @@ public class Review {
 
     /* Prints results to console */
     public void printResults (ResultSet results){
-        System.out.printf("%-5s%-15s%-10s%-10s%-10s","ID","IP Address","Rating","Valid","Review");
-        System.out.println();
+        //System.out.printf("%-5s%-15s%-10s%-10s%-10s","ID","IP Address","Rating","Valid","Review");
+        //System.out.println();
         System.out.println("----------------------------------------------------------------------");
         System.out.printf("%-5s%-15s%-10s%-10s%-10s",reviewID,postingIP,rating,isValid,reviewText);
+        System.out.println();
+    }
+
+    /* Prints results to console */
+    public void printWebResults (ResultSet results){
+        //System.out.printf("%-5s%-15s%-10s%-10s%-10s","ID","IP Address","Rating","Valid","Review");
+        //System.out.println();
+        System.out.println("----------------------------------------------------------------------");
+        System.out.printf("%-5s%-15s",rating,reviewText);
         System.out.println();
     }
 
