@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Controller {
     @FXML
-    TextField reviewText, captcha;
+    TextField reviewText, captcha; 
     Slider rating;
     private String IP;
 
@@ -26,29 +26,19 @@ public class Controller {
             IP = logIP();
             boolean isValid = validateIP(IP);
 
-            /* Testing values for nullpointer   !!! Do not edit this method. I am using this info for testing !!!
-            System.out.println("Review: ");
-            System.out.println();
-            //System.out.println("RATING:" + rating.getValue());
-            System.out.println();
-            System.out.println("IP: " + IP);
-            System.out.println();
-            System.out.println("TEXT: " + reviewText.getText());*/
+            try { // TODO: Are we relocating this to model.Review or to model.DatabaseHelper?
+                Connection connect = DatabaseConfigurator.getConnection();
+                PreparedStatement sqlStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            /* Method call for inserting review into database */
-            Review review = new Review();
-            Blacklist blacklist = new Blacklist();
+                sqlStatement.setString(1, reviewText.getText());
+                sqlStatement.setString(2, Integer.toString((int)Math.round(rating.getValue())));
+                sqlStatement.setString(3, IP);
 
-            review.readReview();
-
-            if (blacklist.isBlacklisted(IP)){
-                review.insertReview("1.1.1.1", "Example Flagged Text", 5);
-                review.flagReview("1.1.1.1");
+                sqlStatement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println("Operation failed due to SQL Exception:\n");
+                DatabaseConfigurator.displayException(e);
             }
-            else
-                review.insertReview("1.1.1.1", "Example New Reivew Text", 5);
-
-            //review.insertReview(IP, reviewText.getText(), (int)Math.round(rating.getValue()));
             changeScene(2);
             return;
         } else {
