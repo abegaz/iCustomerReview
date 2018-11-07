@@ -21,14 +21,14 @@ public class Controller {
     static Review review = new Review();
     static Blacklist blacklist = new Blacklist();
 
-    public void saveToDB (ActionEvent actionEvent) { // TODO: Completely refactor to remove java.sql.* invocations and call provided DatabaseHelper methods
+    public void saveToDB (ActionEvent actionEvent) {
         String query = "INSERT INTO REVIEW" + "(reviewText, rating, IP)" + "values(?,?,?)";
 
         if (verifyCaptcha()) {
             IP = logIP();
             boolean isValid = blacklist.isBlacklisted(IP);
 
-            /* Testing values for nullpointer   // !!! Do not edit this. I am using this info for testing !!! Stephen
+            /* Testing values for nullpointer   TODO: !!! This can be used for testing ready text/int from FXML !!! Stephen
             System.out.println("Review: ");
             System.out.println();
             System.out.println("RATING:" + rating.getValue());
@@ -38,7 +38,6 @@ public class Controller {
             System.out.println("TEXT: " + reviewText.getText());*/
 
             /* Method call for inserting review into database */
-
             if (blacklist.isBlacklisted(IP)){
                 review.insertFakeReview(IP, "Example Flagged Text", 5);
                 //review.insertFakeReview(IP, reviewText.getText(), (int)Math.round(rating.getValue()));  TODO: this can be re-added to code once it can read from FXML
