@@ -1,10 +1,12 @@
 package edu.ung.mccb.csci.csci3300.customer_review.model;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 
 public class Blacklist {
     private Review rv = new Review();
     private PreparedStatement preparedStatement;
+    private Connection connect;
     private ResultSet results;
 
     private int ipListID;
@@ -12,17 +14,52 @@ public class Blacklist {
 
     /* Check IP of post to see if it's been blacklisted */
     public boolean isBlacklisted (String IP) {
-        String query = "SELECT * FROM blacklist WHERE ipAddress =?";
+        int count = 0;
+        String query = "SELECT Count(*) FROM `blacklist` WHERE `ipAddress` = ?";
+
         try {
-            rv.connectionHelper(query, IP, -1);
-            if (results.next())
+            connect = DatabaseConfigurator.getConnection();
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setString(1, IP);
+            results = preparedStatement.executeQuery();
+
+            if (!results.next()) {
+                System.out.println("ResultSet in empty in Java");
+            } else {
+                count = results.getInt("Count(*)");
+            }
+
+            System.out.print("Number of blacklisted entries: " + count);
+            if (count > 0)
                 return true;
+            else
+                return false;
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (Exception e) {
+        }
+
+        return false;
+    }
+
+    /* Returns a blacklisted IP */
+    public String getBlacklistedIP (int ID){
+        String query = "SELECT ipAddress FROM blacklist WHERE ipListID = ?";
+        try {
+            connect = DatabaseConfigurator.getConnection();
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setInt(1, ID);
+            results = preparedStatement.executeQuery();
+            if (!results.next()) {
+                System.out.println("ResultSet in empty in Java");
+            } else {
+                ipAddress = results.getString("ipAddress");
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return ipAddress;
     }
 
     /* Insert a new blacklisted IP to database */
