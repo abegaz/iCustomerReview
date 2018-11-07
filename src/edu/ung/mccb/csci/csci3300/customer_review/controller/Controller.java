@@ -12,10 +12,18 @@ import javafx.stage.Stage;
 import java.sql.*;
 import java.util.Random;
 import java.io.IOException;
+import java.util.function.DoubleToIntFunction;
 
 public class Controller {
     @FXML
-    TextField reviewText, captcha; 
+    TextField reviewText, captcha;
+    @FXML
+    TextArea reviewTextArea, reviewContent;
+    @FXML
+    Button submitReview;
+    @FXML
+    Slider ratingSlider;
+
     Slider rating;
     private String IP;
 
@@ -42,20 +50,21 @@ public class Controller {
             review.readReview();
 
             if (blacklist.isBlacklisted(IP)){
-                review.insertReview("1.1.1.1", "Example Flagged Text", 5);
+                review.insertReview("1.1.1.1", reviewTextArea.getText(), getRating());
                 review.flagReview("1.1.1.1");
             }
             else
-                review.insertReview("1.1.1.1", "Example New Reivew Text", 5);
+                review.insertReview("1.1.1.1", reviewTextArea.getText(), getRating());
 
             //review.insertReview(IP, reviewText.getText(), (int)Math.round(rating.getValue()));
 
             /* !!! End of Testing Code !!! */
-            changeScene(2);
+            //changeScene(2);
             return;
         } else {
-            changeScene(0);
+            //changeScene(0);
         }
+        showReviews();
     }
 
     public boolean verifyCaptcha () {
@@ -89,45 +98,54 @@ public class Controller {
     }
 
     public void changeScene (int sceneID) { // TODO: integration testing
-        Stage newStage = new Stage();
+        //Stage newStage = new Stage();
 
-        switch(sceneID) {
-            case 0: { // Captcha error popup
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Invalid Captcha");
-                alert.setHeaderText(null);
-                alert.setContentText("Incorrect Captcha. Please try again.");
-                alert.showAndWait();
-                return;
-            }
-            case 1: { // review submit page
-                try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
-                    newStage.setTitle("Submit a Review");
-                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
-                } catch (IOException e) {
-                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
-                    e.printStackTrace();
-                    System.exit(-1);
-                }
-
-                break;
-            }
-            case 2: { // read reviews page
-                try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
-                    newStage.setTitle("Product Reviews");
-                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
-                } catch (IOException e) {
-                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
-                    e.printStackTrace();
-                    System.exit(-1);
-                }
-
-                break;
-            }
-        }
-        newStage.show();
+//        switch(sceneID) {
+//            case 0: { // Captcha error popup
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Invalid Captcha");
+//                alert.setHeaderText(null);
+//                alert.setContentText("Incorrect Captcha. Please try again.");
+//                alert.showAndWait();
+//                return;
+//            }
+//            case 1: { // review submit page
+//                try {
+//                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
+//                    newStage.setTitle("Submit a Review");
+//                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+//                } catch (IOException e) {
+//                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
+//                    e.printStackTrace();
+//                    System.exit(-1);
+//                }
+//
+//                break;
+//            }
+//            case 2: { // read reviews page
+//                try {
+//                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
+//                    newStage.setTitle("Product Reviews");
+//                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
+//                } catch (IOException e) {
+//                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
+//                    e.printStackTrace();
+//                    System.exit(-1);
+//                }
+//
+//                break;
+//            }
+//        }
+        //newStage.show();
         return;
+    }
+
+    public void showReviews(){
+        Review review = new Review();
+        reviewContent.setText(review.toString());
+    }
+
+    public int getRating(){
+        return (int) ratingSlider.getValue();
     }
 }
