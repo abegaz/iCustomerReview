@@ -26,7 +26,7 @@ public class Controller {
 
         if (verifyCaptcha()) {
             IP = logIP();
-            boolean isValid = validateIP(IP);
+            boolean isValid = blacklist.isBlacklisted(IP);
 
             /* Testing values for nullpointer   // !!! Do not edit this. I am using this info for testing !!! Stephen
             System.out.println("Review: ");
@@ -90,11 +90,6 @@ public class Controller {
             //System.out.println("Random blacklisted IP: " + buildIP);
         }
         return buildIP;
-    }
-
-    public boolean validateIP (String IP) {
-        // TODO: method body (pending blacklist retrieval method from DatabaseHelper)
-        return false; // TEMPORARY
     }
 
     public void changeScene (int sceneID) { // TODO: integration testing
