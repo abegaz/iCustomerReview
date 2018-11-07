@@ -231,6 +231,12 @@ public class Review {
         return match.find();
     }
 
+    /* toString */
+    @Override
+    public String toString() {
+        return "Review{" + rating + " " + reviewText + "}";
+    }
+
     // accessor/mutator methods
     public int getReviewID () {
         return reviewID;
