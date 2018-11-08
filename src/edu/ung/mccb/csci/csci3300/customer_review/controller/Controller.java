@@ -8,49 +8,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import java.sql.*;
 import java.util.Random;
 import java.io.IOException;
 
 public class Controller {
-    @FXML
-    TextField reviewText, captcha; 
-    Slider rating;
+    @FXML TextArea reviewTextArea, captcha;
+    @FXML Slider ratingSlider;
     private String IP;
+    static Review review = new Review();
+    static Blacklist blacklist = new Blacklist();
 
-    public void saveToDB (ActionEvent actionEvent) { // TODO: Completely refactor to remove java.sql.* invocations and call provided DatabaseHelper methods
-        String query = "INSERT INTO REVIEW" + "(reviewText, rating, IP)" + "values(?,?,?)";
+    public void saveToDB (ActionEvent actionEvent) {
 
         if (verifyCaptcha()) {
             IP = logIP();
             boolean isValid = validateIP(IP);
 
-            /* Testing values for nullpointer   // !!! Do not edit this. I am using this info for testing !!! Stephen
-            System.out.println("Review: ");
-            System.out.println();
-            //System.out.println("RATING:" + rating.getValue());
-            System.out.println();
-            System.out.println("IP: " + IP);
-            System.out.println();
-            System.out.println("TEXT: " + reviewText.getText());*/
-
-            /* Method call for inserting review into database */
-            Review review = new Review();
-            Blacklist blacklist = new Blacklist();
-
-            review.readReview();
-
+            /* Method call for inserting review into database based upon fake or not */
             if (blacklist.isBlacklisted(IP)){
-                review.insertReview("1.1.1.1", "Example Flagged Text", 5);
-                review.flagReview("1.1.1.1");
+                review.insertReview(IP, reviewTextArea.getText(), (int)(ratingSlider.getValue()));
             }
             else
-                review.insertReview("1.1.1.1", "Example New Reivew Text", 5);
+                review.insertReview(IP, reviewTextArea.getText(), (int)(ratingSlider.getValue()));
 
-            //review.insertReview(IP, reviewText.getText(), (int)Math.round(rating.getValue()));
-
-            /* !!! End of Testing Code !!! */
             changeScene(2);
             return;
         } else {
@@ -60,7 +40,7 @@ public class Controller {
 
     public boolean verifyCaptcha () {
         String uCaptcha = captcha.getText();
-        String cCaptcha = "1j93k9L";
+        String cCaptcha = "";
         if (uCaptcha.equals(cCaptcha)){
         return true;
         }
@@ -70,15 +50,27 @@ public class Controller {
         }
     }
 
-    public static String logIP() { // TODO: create 1 in 10 chance of returning a blacklist IP from database ... for testing purposes
+    public static String logIP() {
         String buildIP = "";
         Random RNG = new Random();
 
-        for (int i = 0; i < 3; i++) {
-            if (buildIP.equals("")) {
-                buildIP = Integer.toString(RNG.nextInt(256));
+        /* 15% chance to get blacklisted IP */
+        int chance = RNG.nextInt(100);
+        //System.out.println("Blacklisted IP chance: " + chance);
+        if (chance > 15) {
+            for (int i = 0; i < 3; i++) {
+                if (buildIP.equals("")) {
+                    buildIP = Integer.toString(RNG.nextInt(256));
+                }
+                buildIP = buildIP + "." + RNG.nextInt(256);
             }
-            buildIP = buildIP + "." + RNG.nextInt(256);
+        }
+        else{
+            int rows = review.tableCount("blacklist");
+            int rand = RNG.nextInt(rows);
+            //System.out.println("Random blacklisted ID: " + rand);
+            buildIP = blacklist.getBlacklistedIP(rand);
+            //System.out.println("Random blacklisted IP: " + buildIP);
         }
         return buildIP;
     }

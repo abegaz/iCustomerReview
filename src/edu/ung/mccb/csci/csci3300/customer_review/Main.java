@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
         primaryStage.setTitle("Submit a Review");
-        primaryStage.setScene(new Scene(root, 550, 550));
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 

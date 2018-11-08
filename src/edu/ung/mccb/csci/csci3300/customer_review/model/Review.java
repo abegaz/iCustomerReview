@@ -38,7 +38,7 @@ public class Review {
 
     /* Insert a new Review to the Database */
     public void insertReview(String ip, String text, int rating) {
-        String query = "INSERT INTO `review`" + "(`postingIP`,`reviewTextArea`,`rating`)" + "values(?,?,?)";
+        String query = "INSERT INTO `review`" + "(`postingIP`,`reviewText`,`rating`)" + "values(?,?,?)";
 
         try {
             connect = DatabaseConfigurator.getConnection();
@@ -272,11 +272,11 @@ public class Review {
         return match.find();
     }
 
-    /* toString */
+    /* toString
     @Override
     public String toString() {
         return "Review{" + rating + " " + reviewText + "}";
-    }
+    }*/
 
     // accessor/mutator methods
     public int getReviewID () {

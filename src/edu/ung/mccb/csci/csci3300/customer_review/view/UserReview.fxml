@@ -31,18 +31,16 @@
                   <Text layoutX="286.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
                   <TextArea fx:id="reviewTextArea" layoutX="30.0" layoutY="271.0" prefHeight="80.0" prefWidth="546.0" />
                   <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="30.0" layoutY="225.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
-                     <cursor>
-                        <Cursor fx:constant="NONE" />
-                     </cursor>
+
                   </Slider>
                   <Button fx:id="submitReview" layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
                   <Text layoutX="30.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
                   <ImageView fitHeight="68.0" fitWidth="149.0" layoutX="15.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@CaptchaImage.jpg" />
+                        <Image url="@1j93k9L.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
+                  <TextArea fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
                </children>
             </Pane>
          </children>
