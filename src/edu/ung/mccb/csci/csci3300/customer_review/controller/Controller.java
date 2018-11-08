@@ -94,7 +94,7 @@ public class Controller {
             }
             case 1: { // review submit page
                 try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
+                    Parent sceneFile = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
                     newStage.setTitle("Submit a Review");
                     newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
                 } catch (IOException e) {
@@ -107,10 +107,10 @@ public class Controller {
             }
             case 2: { // read reviews page
                 try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
+                    Parent sceneFile = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
                     newStage.setTitle("Product Reviews");
                     newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
-                } catch (IOException e) {
+                } catch (Exception e) {
                     System.out.println("ERROR: Unhandled exception caught in scene loading.");
                     e.printStackTrace();
                     System.exit(-1);
