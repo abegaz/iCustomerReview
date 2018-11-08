@@ -52,27 +52,9 @@ public class Review {
             e.printStackTrace();
         }
     }
-
-    /* Insert new Review flagged as fake */
-    public void insertFakeReview(String ip, String text, int rating){
-        String query = "INSERT INTO `review`" + "(`postingIP`,`reviewText`,`rating`,`isValid`)" + "values(?,?,?,?)";
-
-        try {
-            connect = DatabaseConfigurator.getConnection();
-            preparedStatement = connect.prepareStatement(query);
-            preparedStatement.setString(1, ip);
-            preparedStatement.setString(2, text);
-            preparedStatement.setInt(3, rating);
-            preparedStatement.setInt(4, 0);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     /* Read all the Reviews */
     public void readReview() {
-            String query = "Select * from review where isValid = 1";
+        String query = "Select * from review where isValid = 1";
         try {
             getReviewResults(connectionHelper(query, "", -1));
         } catch (Exception e) {
@@ -127,20 +109,15 @@ public class Review {
             connect = DatabaseConfigurator.getConnection();
             preparedStatement = connect.prepareStatement(query);
 
-            if (s != "" && i == -1){
+            if (s != "" && i == -1)
                 preparedStatement.setString(1, s);
-                preparedStatement.executeQuery();
-            }
-            else if (s == "" && i != -1){
+            else if (i != -1 && s == "")
                 preparedStatement.setInt(1, i);
-                preparedStatement.executeQuery();
-            }
             else if (s == "" && i == -1);
-                preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         };
-        return results;
+        return results = preparedStatement.executeQuery();
     }
 
     /* Updates Database with prepared statement, requires different execute */
@@ -207,7 +184,7 @@ public class Review {
         System.out.println();
     }
 
-    /* Prints ONLY rating and text for the public, notValid reviews are kept hidden */
+    /* Prints results to console */
     public void printWebResults (ResultSet results){
         //System.out.printf("%-5s%-15s%-10s%-10s%-10s","ID","IP Address","Rating","Valid","Review");
         //System.out.println();
@@ -238,7 +215,7 @@ public class Review {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Total rows in " + table + " = " + count);
+        System.out.println(count);
         return count;
     }
 
@@ -270,12 +247,6 @@ public class Review {
         Pattern pat = Pattern.compile("^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$");
         Matcher match = pat.matcher(ip);
         return match.find();
-    }
-
-    /* toString */
-    @Override
-    public String toString() {
-        return "Review{" + rating + " " + reviewText + "}";
     }
 
     // accessor/mutator methods
