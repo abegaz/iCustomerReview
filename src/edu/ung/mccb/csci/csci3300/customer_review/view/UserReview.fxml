@@ -1,47 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
-   <content>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Pane layoutX="-2.0" prefHeight="400.0" prefWidth="600.0">
-               <children>
-                  <ScrollPane layoutY="34.0">
-                     <content>
-                        <VBox fx:id="reviewContainer" prefHeight="166.0" prefWidth="602.0">
-                           <children>
-                              <TextArea fx:id="reviewContent" editable="false" prefHeight="166.0" prefWidth="575.0" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-                  <Text layoutX="286.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
-                  <TextArea fx:id="reviewTextArea" layoutX="30.0" layoutY="271.0" prefHeight="80.0" prefWidth="546.0" />
-                  <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="30.0" layoutY="225.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
 
-                  </Slider>
-                  <Button fx:id="submitReview" layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
-                  <Text layoutX="30.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
-                  <ImageView fitHeight="68.0" fitWidth="149.0" layoutX="15.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@1j93k9L.jpg" />
-                     </image>
-                  </ImageView>
-                  <TextArea fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+    <children>
+      <Pane layoutX="-2.0" prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="256.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
+            <TextArea layoutX="27.0" layoutY="117.0" prefHeight="200.0" prefWidth="546.0" />
+            <Slider blockIncrement="1.0" layoutX="30.0" layoutY="68.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+               </Slider>
+            <Button layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
+            <Text layoutX="30.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
+             <ImageView fitHeight="68.0" fitWidth="149.0" layoutX="14.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                 <Image url="@1j93k9L.jpg" />
+               </image>
+            </ImageView>
+
+            <TextField fx:id="captcha" layoutX="11.0" layoutY="360.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
+         </children></Pane>
+   </children>
+ </StackPane>
