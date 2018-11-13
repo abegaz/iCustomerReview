@@ -26,7 +26,7 @@ public class Controller {
 
             /* Method call for inserting review into database based upon fake or not */
             if (blacklist.isBlacklisted(IP)){
-                review.insertReview(IP, reviewTextArea.getText(), (int)(ratingSlider.getValue()));
+                review.insertFakeReview(IP, reviewTextArea.getText(), (int)(ratingSlider.getValue()));
             }
             else
                 review.insertReview(IP, reviewTextArea.getText(), (int)(ratingSlider.getValue()));
@@ -40,7 +40,7 @@ public class Controller {
 
     public boolean verifyCaptcha () {
         String uCaptcha = captcha.getText();
-        String cCaptcha = "";
+        String cCaptcha = "1j93k9L";
         if (uCaptcha.equals(cCaptcha)){
         return true;
         }
@@ -57,7 +57,7 @@ public class Controller {
         /* 15% chance to get blacklisted IP */
         int chance = RNG.nextInt(100);
         //System.out.println("Blacklisted IP chance: " + chance);
-        if (chance > 15) {
+        if (chance > 99) {
             for (int i = 0; i < 3; i++) {
                 if (buildIP.equals("")) {
                     buildIP = Integer.toString(RNG.nextInt(256));
@@ -68,9 +68,9 @@ public class Controller {
         else{
             int rows = review.tableCount("blacklist");
             int rand = RNG.nextInt(rows);
-            //System.out.println("Random blacklisted ID: " + rand);
+            System.out.println("Random blacklisted ID: " + rand);
             buildIP = blacklist.getBlacklistedIP(rand);
-            //System.out.println("Random blacklisted IP: " + buildIP);
+            System.out.println("Random blacklisted IP: " + buildIP);
         }
         return buildIP;
     }
