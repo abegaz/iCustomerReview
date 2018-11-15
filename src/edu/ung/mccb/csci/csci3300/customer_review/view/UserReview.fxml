@@ -18,7 +18,7 @@
       <Pane layoutX="-2.0" prefHeight="600.0" prefWidth="600.0">
          <children>
             <Text layoutX="256.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
-            <TextArea fx:id="reviewTextArea" layoutX="27.0" layoutY="117.0" prefHeight="200.0" prefWidth="546.0" />
+            <TextArea fx:id="reviewText" layoutX="27.0" layoutY="117.0" prefHeight="200.0" prefWidth="546.0" />
             <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="30.0" layoutY="68.0" majorTickUnit="1.0" min="1.0" max="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
                </Slider>
             <Button layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
