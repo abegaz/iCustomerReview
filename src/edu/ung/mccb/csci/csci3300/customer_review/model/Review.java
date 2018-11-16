@@ -72,7 +72,7 @@ public class Review {
     }
     /* Read all the Reviews */
     public void readReview() {
-            String query = "Select * from review where isValid = 1";
+        String query = "Select * from review where isValid = 1";
         try {
             getReviewResults(connectionHelper(query, "", -1));
         } catch (Exception e) {

@@ -24,4 +24,10 @@
     -fx-font-family: "Arial Bold";
     -fx-font-weight: bold;
 }
-
+#reviewP{
+    -fx-border-radius: 15px 50px 30px 5px;
+    -fx-background: #73AD;
+    -fx-padding: 30px;
+    -fx-width: 250px;
+    -fx-height: 150px;
+}
