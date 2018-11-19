@@ -15,7 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
         root.getStylesheets().add("edu/ung/mccb/csci/csci3300/customer_review/css/main.css");
         primaryStage.setTitle("Review Submission");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
     }
 
