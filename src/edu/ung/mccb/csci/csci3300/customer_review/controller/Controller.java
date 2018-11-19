@@ -130,7 +130,7 @@ public class Controller {
        // Stage newStage = new Stage();
 
         switch(sceneID) {
-            case 0: { // Captcha error popup
+           case 0: { // Captcha error popup
                 //System.out.println("HIGH LOGIC: Change scene to CAPTCHA ERROR");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid Captcha");
@@ -141,21 +141,21 @@ public class Controller {
             }
             case 1: { // CONFIRMATION
                 //System.out.println("HIGH LOGIC: Change scene to CAPTCHA ERROR");
-                Alert submitR = new Alert(Alert.AlertType.CONFIRMATION);
-                submitR.setTitle("Successful Submission");
-                submitR.setHeaderText(null);
-                submitR.setContentText("Review Submitted");
-                submitR.showAndWait();
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmation.setTitle("Successful Submission");
+                confirmation.setHeaderText(null);
+                confirmation.setContentText("Review Submitted");
+                confirmation.showAndWait();
                 return;
             }
 
             case 2: { // REJECTION
                 //System.out.println("HIGH LOGIC: Change scene to  ERROR");
-                Alert submitR = new Alert(Alert.AlertType.ERROR);
-                submitR.setTitle("Submission Rejected");
-                submitR.setHeaderText(null);
-                submitR.setContentText("Sorry, but you are blacklisted");
-                submitR.showAndWait();
+                Alert rejection = new Alert(Alert.AlertType.ERROR);
+                rejection.setTitle("Submission Rejected");
+                rejection.setHeaderText(null);
+                rejection.setContentText("Sorry, but you are blacklisted");
+                rejection.showAndWait();
                 return;
             
             }
