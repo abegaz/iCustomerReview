@@ -3,23 +3,29 @@ package edu.ung.mccb.csci.csci3300.customer_review.controller;
 import edu.ung.mccb.csci.csci3300.customer_review.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.scene.effect.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import java.util.Random;
+import java.util.ResourceBundle;
+import java.net.URL;
 
-public class Controller {
+public class Controller implements Initializable {
     @FXML TextArea reviewText,captcha;
     @FXML Text captchaImage,title, pr;
     @FXML Slider ratingSlider;
 
     private static Review review = new Review();
     private static Blacklist blacklist = new Blacklist();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        revealCaptcha();
+    }
 
     public void saveToDB (ActionEvent actionEvent)  {
         if (verifyCaptcha()) {
@@ -51,15 +57,15 @@ public class Controller {
             changeScene(0);
     }
 
-    public void revealCaptcha(MouseEvent mouseEvent) {
+    public void revealCaptcha() {
         Captcha text = new Captcha();
-        captchaImage.setText(text.generateRandomString());
         captchaImage.setFill(Color.BLACK);
         captchaImage.setFont(Font.font(null,  FontWeight.EXTRA_LIGHT, 40));
         captchaImage.setEffect(new GaussianBlur());
-        //captchaImage.setStrokeWidth(10.0);
+        captchaImage.setStrokeWidth(10.0);
         captchaImage.setStrikethrough(true);
-        // captchaImage.setCaretBias(true);
+        captchaImage.setCaretBias(true);
+        captchaImage.setText(text.generateRandomString());
         /*PerspectiveTransform pt = new PerspectiveTransform();
         pt.setUlx(10.0f);
         pt.setUly(10.0f);
@@ -86,14 +92,7 @@ public class Controller {
             return true;
         }
         else{
-            Captcha text = new Captcha();
-            captchaImage.setText(text.generateRandomString());
-            captchaImage.setFill(Color.BLACK);
-            captchaImage.setFont(Font.font(null,  FontWeight.EXTRA_LIGHT, 40));
-            captchaImage.setEffect(new GaussianBlur());
-            captchaImage.setStrokeWidth(10.0);
-            captchaImage.setStrikethrough(false);
-            captchaImage.setCaretBias(true);
+            revealCaptcha();
             captcha.clear();
             return false;
         }
@@ -126,9 +125,6 @@ public class Controller {
     }
 
     private void changeScene (int sceneID) {
-        //committed out stage methods
-       // Stage newStage = new Stage();
-
         switch(sceneID) {
            case 0: { // Captcha error popup
                 //System.out.println("HIGH LOGIC: Change scene to CAPTCHA ERROR");
@@ -148,7 +144,6 @@ public class Controller {
                 confirmation.showAndWait();
                 return;
             }
-
             case 2: { // REJECTION
                 //System.out.println("HIGH LOGIC: Change scene to  ERROR");
                 Alert rejection = new Alert(Alert.AlertType.ERROR);
@@ -157,10 +152,8 @@ public class Controller {
                 rejection.setContentText("Sorry, but you are blacklisted");
                 rejection.showAndWait();
                 return;
-            
             }
-    }
-        //newStage.show();
+        }
     }
 }
 

@@ -19,7 +19,7 @@
             <Button layoutX="452.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
             <Text fx:id="pr" layoutX="30.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
             <TextArea fx:id="captcha" layoutX="27.0" layoutY="378.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
-            <Text fx:id="captchaImage" layoutX="30.0" layoutY="355.0" onMouseClicked="#revealCaptcha" strokeType="OUTSIDE" strokeWidth="0.0" text="*Click here to reveal Captcha*" />
+            <Text fx:id="captchaImage" layoutX="30.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
          </children></Pane>
    </children>
  </StackPane>
