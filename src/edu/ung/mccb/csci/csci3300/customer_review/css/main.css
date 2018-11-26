@@ -1,0 +1,50 @@
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Verdana Bold";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #3a3a3a);
+    -fx-effect: innershadow( three-pass-box , rgba(6, 64, 138, 0.46), 6, 0.0 , 0 , 2 );
+    -fx-height: 250px;
+    -fx-width: 250px;
+}
+
+.root {
+    -fx-background-image: url("background.jpg");
+
+}
+
+#title {
+    -fx-font-size: 32px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #818181;
+    -fx-effect: dropshadow( three-pass-box , rgba(6, 64, 138, 0.46), 6, 0.0 , 0 , 2 );
+
+}
+
+#pr{
+    -fx-effect: innershadow( three-pass-box , rgba(6, 64, 138, 0.46), 6, 0.0 , 0 , 2 );
+    -fx-fill: #818181;
+    -fx-font-family: "Arial Black";
+}
+
+#reviewP {
+    -fx-background: #2A5058;
+    -fx-border-radius: 15px 50px 30px;
+    -fx-padding: 15px;
+    -fx-width: 250px;
+    -fx-height: 200px;
+    -fx-font-family: "Arial Black";
+}
+
+#captchaImage{
+    -fx-font-family: "Arial Black";
+    -fx-font-weight: bold;
+    -fx-fill: #818181;
+    -fx-effect: innershadow( three-pass-box , rgba(6, 64, 138, 0.46), 6, 0.0 , 0 , 2 );
+}
+

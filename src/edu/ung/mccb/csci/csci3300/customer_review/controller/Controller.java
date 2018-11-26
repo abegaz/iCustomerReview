@@ -1,101 +1,137 @@
 package edu.ung.mccb.csci.csci3300.customer_review.controller;
 
 import edu.ung.mccb.csci.csci3300.customer_review.model.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.sql.*;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.*;
+import javafx.scene.text.Font;
+import javafx.scene.effect.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import java.util.Random;
-import java.io.IOException;
 
 public class Controller {
-    @FXML
-    TextField reviewText, captcha; 
-    Slider rating;
-    private String IP;
-    static Review review = new Review();
-    static Blacklist blacklist = new Blacklist();
+    @FXML TextArea reviewText,captcha;
+    @FXML Text captchaImage,title, pr;
+    @FXML Slider ratingSlider;
 
-    public void saveToDB (ActionEvent actionEvent) {
-        String query = "INSERT INTO REVIEW" + "(reviewText, rating, IP)" + "values(?,?,?)";
+    private static Review review = new Review();
+    private static Blacklist blacklist = new Blacklist();
 
+    public void saveToDB (ActionEvent actionEvent)  {
         if (verifyCaptcha()) {
-            IP = logIP();
-            boolean isValid = blacklist.isBlacklisted(IP);
+            String IP = logIP();
+            String reviewText = this.reviewText.getText();
+            int rating = (int) Math.round(this.ratingSlider.getValue());
+            boolean isBlacklisted = blacklist.isBlacklisted(IP); // negated so value is human-expected
 
-            /* Testing values for nullpointer   TODO: !!! This can be used for testing ready text/int from FXML !!! Stephen
-            System.out.println("Review: ");
-            System.out.println();
-            System.out.println("RATING:" + rating.getValue());
-            System.out.println();
+            // Print review to console prior to database push
+            System.out.println("Submitted Review: "); // DEBUG
+            System.out.println("RATING:" + rating);
             System.out.println("IP: " + IP);
-            System.out.println();
-            System.out.println("TEXT: " + reviewText.getText());*/
+            System.out.println("BLACKLISTED: " + isBlacklisted);
+            System.out.println("TEXT:\n" + reviewText);
 
-            /* Method call for inserting review into database */
-            if (blacklist.isBlacklisted(IP)){
-                review.insertFakeReview(IP, "Example Flagged Text", 5);
-                //review.insertFakeReview(IP, reviewText.getText(), (int)Math.round(rating.getValue()));  TODO: this can be re-added to code once it can read from FXML
+            if (isBlacklisted) { // negated for human readability
+                //view.insertFakeReview(IP, "Example Flagged Text", 5);
+                review.insertFakeReview(IP, reviewText, rating);
+                System.out.println("INFO: Review inserted as fraudulent"); // DEBUG
+                changeScene(2);
+            } else {
+                //review.insertReview(IP, "Example New Reivew Text", 5);
+                review.insertReview(IP, reviewText, rating);
+                System.out.println("INFO: Review inserted as valid"); // DEBUG
+                changeScene(1);
             }
-            else
-                review.insertReview(IP, "Example New Reivew Text", 5);
-                //review.insertReview(IP, reviewText.getText(), (int)Math.round(rating.getValue())); TODO: this can be re-added to code once it can read from FXML
 
-            /* !!! End of Testing Code !!! */
-            changeScene(2);
-            return;
-        } else {
+        } else
             changeScene(0);
-        }
     }
 
-    public boolean verifyCaptcha () {
+    public void revealCaptcha(MouseEvent mouseEvent) {
+        Captcha text = new Captcha();
+        captchaImage.setText(text.generateRandomString());
+        captchaImage.setFill(Color.BLACK);
+        captchaImage.setFont(Font.font(null,  FontWeight.EXTRA_LIGHT, 40));
+        captchaImage.setEffect(new GaussianBlur());
+        //captchaImage.setStrokeWidth(10.0);
+        captchaImage.setStrikethrough(true);
+        // captchaImage.setCaretBias(true);
+        /*PerspectiveTransform pt = new PerspectiveTransform();
+        pt.setUlx(10.0f);
+        pt.setUly(10.0f);
+        pt.setUrx(310.0f);
+        pt.setUry(40.0f);
+        pt.setLrx(310.0f);
+        pt.setLry(60.0f);
+        pt.setLlx(10.0f);
+        pt.setLly(90.0f);
+        pt.setUlx(10.0f);
+        pt.setUly(10.0f);
+        pt.setUrx(310.0f);
+        pt.setUry(40.0f);
+        pt.setLrx(310.0f);
+        pt.setLry(60.0f);
+        pt.setLlx(10.0f);
+        pt.setLly(90.0f);
+        captchaImage.setEffect(pt);*/
+    }
+
+    private boolean verifyCaptcha () {
         String uCaptcha = captcha.getText();
-        String cCaptcha = ""; // TODO: removed String for testing purposes, can re-add once captcha is working - Stephen
-        if (uCaptcha.equals(cCaptcha)){
-        return true;
+        if(captchaImage.getText().equals(uCaptcha)) {
+            return true;
         }
         else{
+            Captcha text = new Captcha();
+            captchaImage.setText(text.generateRandomString());
+            captchaImage.setFill(Color.BLACK);
+            captchaImage.setFont(Font.font(null,  FontWeight.EXTRA_LIGHT, 40));
+            captchaImage.setEffect(new GaussianBlur());
+            captchaImage.setStrokeWidth(10.0);
+            captchaImage.setStrikethrough(false);
+            captchaImage.setCaretBias(true);
+            captcha.clear();
             return false;
-
         }
     }
 
-    public static String logIP() {
+    private static String logIP() {
+        System.out.println("HIGH LOGIC: Logging (generating) source IP");
+
         String buildIP = "";
         Random RNG = new Random();
-
-        /* 15% chance to get blacklisted IP */
         int chance = RNG.nextInt(100);
-        //System.out.println("Blacklisted IP chance: " + chance);
-        if (chance > 15) {
+        System.out.println("Return blacklisted IP chance: " + chance);
+
+        // 15% chance to get blacklisted IP
+        if (chance > 50) {
             for (int i = 0; i < 3; i++) {
                 if (buildIP.equals("")) {
                     buildIP = Integer.toString(RNG.nextInt(256));
                 }
                 buildIP = buildIP + "." + RNG.nextInt(256);
             }
-        }
-        else{
+            System.out.println("Non-blacklisted IP generated\nValue: " + buildIP);
+        } else {
             int rows = review.tableCount("blacklist");
             int rand = RNG.nextInt(rows);
-            //System.out.println("Random blacklisted ID: " + rand);
             buildIP = blacklist.getBlacklistedIP(rand);
-            //System.out.println("Random blacklisted IP: " + buildIP);
+            System.out.println("Blacklisted IP generated\nRandom blacklisted ID: " + rand + "\nRandom blacklisted IP: " + buildIP); // DEBUG
         }
         return buildIP;
     }
 
-    public void changeScene (int sceneID) { // TODO: integration testing
-        Stage newStage = new Stage();
+    private void changeScene (int sceneID) {
+        //committed out stage methods
+       // Stage newStage = new Stage();
 
         switch(sceneID) {
-            case 0: { // Captcha error popup
+           case 0: { // Captcha error popup
+                //System.out.println("HIGH LOGIC: Change scene to CAPTCHA ERROR");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid Captcha");
                 alert.setHeaderText(null);
@@ -103,34 +139,30 @@ public class Controller {
                 alert.showAndWait();
                 return;
             }
-            case 1: { // review submit page
-                try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/UserReview.fxml"));
-                    newStage.setTitle("Submit a Review");
-                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
-                } catch (IOException e) {
-                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
-                    e.printStackTrace();
-                    System.exit(-1);
-                }
-
-                break;
+            case 1: { // CONFIRMATION
+                //System.out.println("HIGH LOGIC: Change scene to CAPTCHA ERROR");
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmation.setTitle("Successful Submission");
+                confirmation.setHeaderText(null);
+                confirmation.setContentText("Review Submitted");
+                confirmation.showAndWait();
+                return;
             }
-            case 2: { // read reviews page
-                try {
-                    Parent sceneFile = FXMLLoader.load(getClass().getResource("edu/ung/mccb/csci/csci3300/customer_review/view/Products.fxml"));
-                    newStage.setTitle("Product Reviews");
-                    newStage.setScene(new Scene(sceneFile, 550, 550)); // TODO: adjust window size as needed
-                } catch (IOException e) {
-                    System.out.println("ERROR: Unhandled exception caught in scene loading.");
-                    e.printStackTrace();
-                    System.exit(-1);
-                }
 
-                break;
+            case 2: { // REJECTION
+                //System.out.println("HIGH LOGIC: Change scene to  ERROR");
+                Alert rejection = new Alert(Alert.AlertType.ERROR);
+                rejection.setTitle("Submission Rejected");
+                rejection.setHeaderText(null);
+                rejection.setContentText("Sorry, but you are blacklisted");
+                rejection.showAndWait();
+                return;
+            
             }
-        }
-        newStage.show();
-        return;
+    }
+        //newStage.show();
     }
 }
+
+
+

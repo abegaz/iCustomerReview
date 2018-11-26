@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
-   <children>
-      <Pane layoutX="-2.0" prefHeight="400.0" prefWidth="600.0">
+<StackPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ung.mccb.csci.csci3300.customer_review.controller.Controller">
+    <children>
+      <Pane layoutX="-2.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/main.css">
          <children>
-            <Text layoutX="286.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
-            <TextArea layoutX="30.0" layoutY="151.0" prefHeight="200.0" prefWidth="546.0" />
-            <Slider blockIncrement="1.0" layoutX="30.0" layoutY="102.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor></Slider>
-            <Button layoutX="455.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
-            <Text layoutX="30.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
-            <ImageView fitHeight="68.0" fitWidth="149.0" layoutX="15.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@1j93k9L.jpg" /> 
-               </image>
-            </ImageView>
-            <TextField fx:id="captcha" layoutX="25.0" layoutY="441.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
+            <Text fx:id="title" layoutX="231.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Submit A Review" textAlignment="CENTER" />
+            <TextArea fx:id="reviewText" layoutX="27.0" layoutY="117.0" prefHeight="200.0" prefWidth="546.0" wrapText="true" />
+            <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="30.0" layoutY="68.0" majorTickUnit="1.0" min="1.0" max="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+               </Slider>
+            <Button layoutX="452.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveToDB" prefHeight="27.0" prefWidth="121.0" text="Submit Review" />
+            <Text fx:id="pr" layoutX="30.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Rating" />
+            <TextArea fx:id="captcha" layoutX="27.0" layoutY="378.0" prefHeight="4.0" prefWidth="116.0" promptText="Enter Captcha." />
+            <Text fx:id="captchaImage" layoutX="30.0" layoutY="355.0" onMouseClicked="#revealCaptcha" strokeType="OUTSIDE" strokeWidth="0.0" text="*Click here to reveal Captcha*" />
          </children></Pane>
    </children>
-</AnchorPane>
+ </StackPane>

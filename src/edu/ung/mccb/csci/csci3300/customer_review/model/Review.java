@@ -1,6 +1,11 @@
 package edu.ung.mccb.csci.csci3300.customer_review.model;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
+
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,7 +72,7 @@ public class Review {
     }
     /* Read all the Reviews */
     public void readReview() {
-            String query = "Select * from review where isValid = 1";
+        String query = "Select * from review where isValid = 1";
         try {
             getReviewResults(connectionHelper(query, "", -1));
         } catch (Exception e) {
@@ -161,7 +166,11 @@ public class Review {
     }
 
     /* Gets results from query for Review table */
-    public void getReviewResults(ResultSet results){
+    public ArrayList<ArrayList<String>> getReviewResults(ResultSet results){
+        ArrayList<String> reviewTexts = new ArrayList<String>();
+        ArrayList<String> reviewRatings = new ArrayList<String>();
+        ArrayList<ArrayList<String>> reviews = new ArrayList<ArrayList<String>>();
+
         try {
             if (!results.next()) {
                 System.out.println("ResultSet in empty in Java");
@@ -173,11 +182,20 @@ public class Review {
                     rating = results.getInt("rating");
                     //isValid = results.getBoolean("isValid");
                     printWebResults(results);
+
+                    reviewTexts.add(reviewText);
+                    reviewRatings.add(String.valueOf(rating));
                 }
+                reviews.add(reviewTexts);
+                reviews.add(reviewRatings);
+
+                return reviews;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return reviews;
     }
 
     /* Prints results to console */
@@ -224,6 +242,29 @@ public class Review {
         return count;
     }
 
+    public String toString(){
+        String query = "Select * from review where isValid = 1";
+        try {
+            getReviewResults(connectionHelper(query, "", -1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String reviewString = "";
+
+        ArrayList<ArrayList<String>> reviews = getReviewResults(results);
+
+        ArrayList<String> reviewTexts = reviews.get(0);
+        ArrayList<String> reviewRatings = reviews.get(1);
+
+        for(int i = 0; i < reviewTexts.size(); i++) {
+            System.out.println(reviewRatings.get(i) + reviewTexts.get(i));
+            reviewString.concat(reviewRatings.get(i) + ": " + reviewTexts.get(i) + "\n");
+        }
+
+        return reviewString;
+    }
+
     /* Verifies IP address is a valid IP */
     public static boolean isValidIP(String ip){
         Pattern pat = Pattern.compile("^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$");
@@ -231,11 +272,11 @@ public class Review {
         return match.find();
     }
 
-    /* toString */
+    /* toString
     @Override
     public String toString() {
         return "Review{" + rating + " " + reviewText + "}";
-    }
+    }*/
 
     // accessor/mutator methods
     public int getReviewID () {
