@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2018 at 08:06 PM
+-- Generation Time: Nov 28, 2018 at 01:14 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -143,7 +143,43 @@ INSERT INTO `review` (`reviewID`, `postingIP`, `reviewText`, `rating`, `isValid`
 (88, '51.72.231.91', 'lshr6 8j9l  ertpp\'[\'\'', 5, 1),
 (89, '103.110.49.67', 'asdf asdf sadf', 1, 1),
 (90, '201.48.188.203', 'asdfASE FEWF E', 1, 1),
-(91, '244.70.76.170', 'a sdfawfwefwe', 1, 1);
+(91, '244.70.76.170', 'a sdfawfwefwe', 1, 1),
+(93, '3.3.3.3', 'This is a review.', 3, 1),
+(94, '55.92.173.176', 'drop table where 1=1', 3, 1),
+(95, '248.92.246.147', 'test test test', 5, 1),
+(96, '239.32.002.0', 'This is a fake review.', 4, 1),
+(97, '149.2.140.101', 'THIS is now a fake review.', 2, 1),
+(98, '7.7.7.7', 'lol', 3, 1),
+(99, '255.255.255.255', 'Finally a fake review!', 5, 0),
+(100, '19.49.190.136', 'Yet another fake review.', 1, 0),
+(101, '255.255.255.255', 'What is this all about?', 2, 0),
+(102, '35.43.77.160', 'asdfasdfasdfasdfasdfasdfasdf', 4, 1),
+(103, '223.47.2.221', 'asdfadsf', 1, 1),
+(104, '202.142.137.151', 'asdfadsf', 4, 1),
+(105, '24.154.236.1', 'FAKE review', 4, 0),
+(106, '141.51.239.53', 'pu h', 3, 0),
+(107, '81.145.224.162', 'ug 087tr08 tyufjg9-8y pghjgp ', 3, 1),
+(108, '19.49.190.136', 'ug 087tr08 tyufjg9-8y pghjgp ', 3, 0),
+(109, '168.192.0.0', 'This review is in a jar, NOT intellij. Blacklist is 50% chance.', 3, 0),
+(110, '25.201.179.240', 'This review is in a jar, NOT intellij. Blacklist is 50% chance.', 3, 0),
+(111, '77.57.36.10', 'This review is in a jar, NOT intellij. Blacklist is 50% chance.', 3, 1),
+(112, '141.51.239.53', 'asdfsadf 4tj576 kkimuntrsfa D32', 4, 0),
+(113, '25.201.179.240', 'asdfsadf 4tj576 kkimuntrsfa D32', 4, 0),
+(114, '168.192.0.0', 'asdfsadf 4tj576 kkimuntrsfa D32', 4, 0),
+(115, '91.191.10.50', 'asdfsadf 4tj576 kkimuntrsfa D32', 4, 1),
+(116, '27.20.214.144', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(117, '30.202.161.57', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(118, '249.62.135.226', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(119, '154.63.133.195', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(120, '159.96.158.101', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(121, '5.193.108.95', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(122, '80.42.240.40', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 1),
+(123, '19.49.190.136', 'fja ;ldkj[qrew\npojqw;lkdjf poea\nj4\"Pwe', 4, 0),
+(124, '247.208.12.197', 'test', 3, 0),
+(125, '4.4.31.138', 'I promised to look after a friends cat for the week. My place has a glass atrium that goes through two levels, I have put the cat in there with enough food and water to last the week. I am looking forward to the end of the week. It is just sitting there glaring at me, it doesn\'t do anything else. I can tell it would like to kill me. If I knew I could get a perfect replacement cat, I would kill this one now and replace it Friday afternoon. As we sit here glaring at each other I have already worked out several ways to kill it.\nThe simplest would be to drop heavy items on it from the upstairs bedroom though I have enough basic engineering knowledge to assume that I could build some form of \'spear like\' projectile device from parts in the downstairs shed. If the atrium was waterproof, the most entertaining would be to flood it with water. It wouldn\'t have to be that deep, just deeper than the cat.', 3, 1),
+(126, '25.201.179.240', 'This is a review for an imaginary product. We wanted to allow more for a log in and product page but ended up going with this. The back end is via SQL database. And only allows for a limit of around 1000 characters.', 5, 0),
+(127, '168.192.0.0', 'This is a review for an imaginary product. We wanted to allow more for a log in and product page but ended up going with this. The back end is via SQL database. And only allows for a limit of around 1000 characters.', 5, 0),
+(128, '78.226.52.90', 'This is a review for an imaginary product. We wanted to allow more for a log in and product page but ended up going with this. The back end is via SQL database. And only allows for a limit of around 1000 characters.', 5, 1);
 
 --
 -- Indexes for dumped tables
@@ -176,7 +212,7 @@ ALTER TABLE `blacklist`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
